@@ -3,6 +3,7 @@ window.onload = function() {
 	adjestPSS();
 	adjestTBS();
 	adjestDB();
+	adjestScrll();
 }
 
 /* Navbar maintainance >> */
@@ -131,5 +132,60 @@ window.onload = function() {
 				db.getElementsByClassName('content')[0].className += ' active';
 				document.body.style.overflow = 'hidden';
 			});
+		}
+	}
+/* Smooth Scroll */
+	function adjestScrll() {
+		x = document.getElementsByTagName('a');
+		console.log(x);
+		for (i = 0; i < x.length; i++) {
+			if (x[i].getAttribute('role') == 'inPageLink') {
+				x[i].className += ' in-page-link';
+				if (x[i].getAttribute('toElement').indexOf('#') == 0) {
+					x[i].addEventListener('click', function() {
+						var z = this;
+						var ele = document.getElementById(z.getAttribute('toElement').replace('#', ''));
+						
+						
+						var tt = parseInt(z.getAttribute('timetaken'));
+						var fps =  100;
+						var interval = 1000 / fps;
+						var iteration = fps * tt;
+						var n = 0;
+						var ii = (ele.offsetTop - getWinYOset()) / iteration;
+						
+						var w = false;
+						if (getWinYOset() > ele.offsetTop) {
+							ii = (0 - (getWinYOset() - ele.offsetTop)) / iteration;
+							w = true;
+						}
+						var q = setInterval(function() {move();}, interval);
+						function move() {
+							if (getWinYOset() == ele.offsetTop) {
+								clearInterval(q);
+								return;
+							} else if (w == true & getWinYOset() < ele.offsetTop) {
+								clearInterval(q);
+								return;
+							} else if (w == false & getWinYOset() > ele.offsetTop) {
+								clearInterval(q);
+								return;
+							} else {
+								n++;
+							}
+							window.scrollBy(0, ii);
+						}
+						function getWinYOset() {
+							var y = 0;
+							if (document.getElementsByClassName('nav nav-top').length > 0) {
+								y = (window.pageYOffset + 70);
+							} else {
+								y = window.pageYOffset;
+							}
+							return y;
+						}
+					});
+				}
+			}
 		}
 	}

@@ -65,6 +65,16 @@ div.full-page-box {
 .bright-bg {
 	background-color: rgba(255, 255, 255, 0.7);
 }
+a.in-page-link {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* IE/Edge */
+	user-select: none;           /* non-prefixed version, currently not supported by any browser */
+	
+	cursor: pointer;
+}
 
 /* Cards */
 div.card {
@@ -298,12 +308,12 @@ div.nav {
 			animation-fill-mode: forwards;
 		}
 		.nav-left-anim-body-go-left {
-			animation: nav-left-anim-body-goLeft 2s ease 1 normal;
-			animation-fill-mode: forwards;
+			/*animation: nav-left-anim-body-goLeft 2s ease 1 normal;
+			animation-fill-mode: forwards;*/
 		}
 		.nav-left-anim-body-go-right {
-			animation: nav-left-anim-body-goRight 2s ease 1 normal;
-			animation-fill-mode: forwards;
+			/*animation: nav-left-anim-body-goRight 2s ease 1 normal;
+			animation-fill-mode: forwards;*/
 		}
 		.nav-left-anim-nav-top-go-left {
 			animation: nav-left-anim-nav-top-goLeft 1s ease 1 normal;
