@@ -206,8 +206,9 @@ table.table {
 		animation: table-ineractive-anim-hover-highlight 0.5s ease 1 normal;
 		animation-fill-mode: forwards;
 	}
-	table.interactive tr:active {
+	table.interactive tr.clicked {
 		color: #fff;
+		background-color: #000;
 	}
 		/* Animations */
 		@keyframes table-ineractive-anim-hover-highlight {
