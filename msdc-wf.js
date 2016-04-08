@@ -1,9 +1,26 @@
 window.onload = function() {
+	/*this.loadAllLibraries = function() {
+		var list = this.getListOfLibraries();
+		var imported = new Array(list.length);
+		for (i = 0; i < list.length; i++) {
+			imported[i] = document.createElement('script');
+			imported[i].src = list[i];
+			document.head.appendChild(imported[i]);
+		}
+	}
+	this.getListOfLibraries = function() {
+		var files = ['dynamicCSS.js'];
+		files.push('');
+		return files;
+	}
+	loadAllLibraries();*/
+	
 	initializeNavBars();
 	adjestPSS();
 	adjestTBS();
 	adjestDB();
 	adjestScrll();
+	adjestIT();
 }
 
 /* Navbar maintainance >> */
@@ -137,7 +154,6 @@ window.onload = function() {
 /* Smooth Scroll */
 	function adjestScrll() {
 		x = document.getElementsByTagName('a');
-		console.log(x);
 		for (i = 0; i < x.length; i++) {
 			if (x[i].getAttribute('role') == 'inPageLink') {
 				x[i].className += ' in-page-link';
@@ -183,6 +199,30 @@ window.onload = function() {
 								y = window.pageYOffset;
 							}
 							return y;
+						}
+					});
+				}
+			}
+		}
+	}
+/* Interactive Table Maintainance */
+	function adjestIT() {
+		var t = new Array(document.getElementsByClassName('table').length);
+		t = document.getElementsByClassName('table');
+		for (i = 0; i < t.length; i++) {
+			if (t[i].className.indexOf('interactive') != -1) {
+				var rws = new Array(t[i].rows.length);
+				rws = t[i].rows;
+				var tab = t[i];
+				for (ii = 0; ii < rws.length; ii++) {
+					rws[ii].addEventListener('click', function() {
+						if (this.className.indexOf('clicked') != -1) {
+							this.className = this.className.replace(' clicked', '');
+						} else {
+							for (iii = 0; iii < this.parentNode.children.length; iii++) {
+								this.parentNode.children[iii].className = this.parentNode.children[iii].className.replace(' clicked', '');
+							}
+							this.className += ' clicked';
 						}
 					});
 				}
