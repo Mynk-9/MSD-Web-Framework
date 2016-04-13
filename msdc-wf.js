@@ -1,5 +1,5 @@
 window.onload = function() {
-	/*this.loadAllLibraries = function() {
+	this.loadAllLibraries = function() {
 		var list = this.getListOfLibraries();
 		var imported = new Array(list.length);
 		for (i = 0; i < list.length; i++) {
@@ -9,11 +9,10 @@ window.onload = function() {
 		}
 	}
 	this.getListOfLibraries = function() {
-		var files = ['dynamicCSS.js'];
-		files.push('');
+		var files = ['JS FW/msdc-wf-JSFW.js'];
 		return files;
 	}
-	loadAllLibraries();*/
+	loadAllLibraries();
 	
 	initializeNavBars();
 	adjestPSS();
@@ -21,6 +20,7 @@ window.onload = function() {
 	adjestDB();
 	adjestScrll();
 	adjestIT();
+	adjectLA();
 }
 
 /* Navbar maintainance >> */
@@ -44,26 +44,14 @@ window.onload = function() {
 		var tn = new Array(document.getElementsByClassName('nav nav-top').length);
 		tn = document.getElementsByClassName('nav nav-top')[0];
 		if (ln.className.indexOf('nav-left-anim-go-left') != -1) {
-			ln.className = ln.className.replace(' nav-left-anim-go-left', '');
-			ln.className += (' nav-left-anim-go-right');
-			document.body.className = document.body.className.replace(' nav-left-anim-body-go-left', '');
-			document.body.className += (' nav-left-anim-body-go-right');
-			tn.className = tn.className.replace(' nav-left-anim-nav-top-go-left','');
-			tn.className += ' nav-left-anim-nav-top-go-right';
+			new $$(ln).toggleClass('nav-left-anim-go-left', 'nav-left-anim-go-right');
+			new $$(tn).toggleClass('nav-left-anim-nav-top-go-left', 'nav-left-anim-nav-top-go-right');
 		} else if (ln.className.indexOf('nav-left-anim-go-right') != -1) {
-			ln.className = ln.className.replace(' nav-left-anim-go-right', '');
-			ln.className += (' nav-left-anim-go-left');
-			document.body.className = document.body.className.replace(' nav-left-anim-body-go-right', '');
-			document.body.className += (' nav-left-anim-body-go-left');
-			tn.className = tn.className.replace(' nav-left-anim-nav-top-go-right', '');
-			tn.className += ' nav-left-anim-nav-top-go-left';
+			new $$(ln).toggleClass('nav-left-anim-go-right', 'nav-left-anim-go-left');
+			new $$(tn).toggleClass('nav-left-anim-nav-top-go-right', 'nav-left-anim-nav-top-go-left');
 		} else {
-			ln.className = ln.className.replace(' nav-left-anim-go-left', '');
-			ln.className += (' nav-left-anim-go-right');
-			document.body.className = document.body.className.replace(' nav-left-anim-body-go-left', '');
-			document.body.className += (' nav-left-anim-body-go-right');
-			tn.className = tn.className.replace(' nav-left-anim-nav-top-go-left','');
-			tn.className += ' nav-left-anim-nav-top-go-right';
+			new $$(ln).addClass('nav-left-anim-go-right');
+			new $$(tn).addClass('nav-left-anim-nav-top-go-right');
 		}
 	}
 /* Picture Slide Show Maintainance */
@@ -90,12 +78,11 @@ window.onload = function() {
 				}
 			}
 		}
-		for (i = 0; i < pics.length; i++) {			
-			pics[i].className = pics[i].className.replace(' picture-last-active', '');
-			pics[i].className = pics[i].className.replace(' picture-active', ' picture-last-active');
+		for (i = 0; i < pics.length; i++) {
+			new $$(pics[i]).toggleClass(' picture-last-active', '');
+			new $$(pics[i]).toggleClass(' picture-active', ' picture-last-active');
 		}
-		console.log('z = ' + z);
-		pics[z].className += ' picture-active';
+		new $$(pics[z]).addClass('picture-active');
 	}
 	function ssgoright(ss) {
 		var pics = ss.getElementsByClassName('picture');
@@ -109,12 +96,11 @@ window.onload = function() {
 				}
 			}
 		}
-		for (i = 0; i < pics.length; i++) {			
-			pics[i].className = pics[i].className.replace(' picture-last-active', '');
-			pics[i].className = pics[i].className.replace(' picture-active', ' picture-last-active');
+		for (i = 0; i < pics.length; i++) {
+			new $$(pics[i]).toggleClass(' picture-last-active', '');
+			new $$(pics[i]).toggleClass(' picture-active', ' picture-last-active');
 		}
-		console.log('z = ' + z);
-		pics[z].className += ' picture-active';
+		new $$(pics[z]).addClass('picture-active');
 	}
 /* Tabination Maintainance */
 	function adjestTBS() {
@@ -126,12 +112,12 @@ window.onload = function() {
 			for (ii = 0; ii < tabs.length; ii++) {
 				tabs[ii].addEventListener('click', function() {
 					for (q = 0; q < tabs.length; q++) {
-						tabs[q].className = tabs[q].className.replace(' active', '');
-						divs[q].className = divs[q].className.replace(' active', '');
+						new $$(tabs[q]).toggleClass(' active', '');
+						new $$(divs[q]).toggleClass(' active', '');
 					}
 					this.className += ' active';
 					var id = this.getAttribute('tabtarget')
-					document.getElementById(id).className += ' active';
+					new $$(document.getElementById(id)).addClass('active');
 				});
 			}
 		}
@@ -142,11 +128,11 @@ window.onload = function() {
 		for (i = 0; i < dbs.length; i++) {
 			var db = dbs[i];
 			dbs[i].getElementsByClassName('footer')[0].getElementsByClassName('close')[0].addEventListener('click', function() {
-				db.getElementsByClassName('content')[0].className = db.getElementsByClassName('content')[0].className.replace(' active', '');
+				new $$(db.getElementsByClassName('content')[0]).toggleClass(' active', '');
 				document.body.style.overflow = 'auto';
 			});
 			dbs[i].getElementsByClassName('toggle')[0].addEventListener('click', function() {
-				db.getElementsByClassName('content')[0].className += ' active';
+				new $$(db.getElementsByClassName('content')[0]).addClass('active');
 				document.body.style.overflow = 'hidden';
 			});
 		}
@@ -217,15 +203,25 @@ window.onload = function() {
 				for (ii = 0; ii < rws.length; ii++) {
 					rws[ii].addEventListener('click', function() {
 						if (this.className.indexOf('clicked') != -1) {
-							this.className = this.className.replace(' clicked', '');
+							new $$(this).toggleClass('clicked', '');
 						} else {
 							for (iii = 0; iii < this.parentNode.children.length; iii++) {
-								this.parentNode.children[iii].className = this.parentNode.children[iii].className.replace(' clicked', '');
+								new $$(this.parentNode.children[iii]).toggleClass('clicked', '');
 							}
-							this.className += ' clicked';
+							new $$(this).addClass('clicked');
 						}
 					});
 				}
 			}
+		}
+	}
+/* Loading Animation Maintainance */
+	function adjectLA() {
+		var la = new Array(document.getElementsByClassName('loading-page').length);
+		la = document.getElementsByClassName('loading-page');
+		for (i = 0; i < la.length; i++) {
+			la[i].setAttribute('style', 'display: none;');
+			la[i].innerHTML = '';
+			la[i].className = '';
 		}
 	}

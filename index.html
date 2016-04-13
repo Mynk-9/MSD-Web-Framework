@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MSD Web Framework</title>
+		<link rel="stylesheet" href="msdc-wf.css">
+		<script src="msdc-wf.js"></script>
+	</head>
+	
+	<body>
+		<div class="loading-page"><div class="loading loading-flappy-square"><div></div></div></div>
+		<div class="nav nav-top">
+			<div class="left">
+				<p>
+					<button onclick="toggleLeftNav();" style="left: 0px;">
+						<svg height="25" width="25">
+							<polyline points="0,4 25,4" style="fill:white;stroke:black;stroke-width:4" />
+							<polyline points="0,12.5 25,12.5" style="fill:white;stroke:black;stroke-width:4" />
+							<polyline points="0,21 25,21" style="fill:white;stroke:black;stroke-width:4" />
+						</svg>
+					</button>
+				</p>
+			</div>
+			<div class="center">
+				<p>
+					<span class="title">MSD Web Framework</span>
+				</p>
+			</div>
+			<div class="right">
+				<p>
+					
+				</p>
+			</div>
+		</div>
+		<div class="nav nav-left">
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#home" timetaken="2">Home</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#tables" timetaken="2">Table Styling</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#cards" timetaken="2">Cards</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#HTMLdb" timetaken="2">HTML Dialogue Boxes</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#SShow" timetaken="2">Slide Show</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#LAnimations" timetaken="2">Loading Animations</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#tbn" timetaken="2">Tabination</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#mscrolling" timetaken="2">Masked Scrolling</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					Visit the <a href="https://github.com/Mynk-9/MSD-Web-Framework">GitHib Page</a>
+				</p>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper.jpg');" id="home">
+			<div class="slide">
+				<h1 class="align-vertical-horizontal-center">So, welcome to MSD Web Framework.</h1>
+				<h3>Please keep scrolling down... A long way!. Or, use navigation from left toggling pane.</h3>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-2.jpg');" id="tables">
+			<div class="slide">
+				<h1>Ever worried to make tables in your website look *Modern*?</h1>
+				<h1 align=center>There is a solution down there...</h1>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-2.jpg');">
+			<div class="slide-full">
+				<table class="table highlight-alternate" style="width: 50%;">
+				<tr>
+					<td>Highlight-Alternate</td>
+					<td>Table</td>
+				</tr>
+				<tr>
+					<td>Alternate</td>
+					<td>Rows</td>
+				</tr>
+				<tr>
+					<td>are</td>
+					<td>Highlighted</td>
+				</tr>
+				<tr>
+				<td>Like</td>
+					<td>This</td>
+				</tr>
+			</table>
+			<table class="table interactive" style="width: 50%;">
+				<tr>
+					<td>Interactive</td>
+					<td>Table</td>
+				</tr>
+				<tr>
+					<td>Has smooth</td>
+					<td>Animation</td>
+				</tr>
+				<tr>
+					<td>for</td>
+					<td>highlighting rows</td>
+				</tr>
+			</table>
+			<table class="table highlight-alternate interactive" style="width: 50%;">
+				<tr>
+					<td>Both</td>
+					<td>Of</td>
+				</tr>
+				<tr>
+					<td>Them</td>
+					<td>Together -</td>
+				</tr>
+				<tr>
+					<td>Highlight-Alternate, and,</td>
+					<td>Interactive</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-3.jpg');" id="cards">
+			<div class="slide">
+				<h1>Ever heard of or tried to make or use 'Cards'?</h1>
+				<h1 align=center>Well, you've got a lot of choices here !!</h1>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-3.jpg');">
+			<div class="slide-full">
+				<h1 align=center>Normal Cards</h1>
+				<div class="page-row">
+					<div class="card">
+						<div class="header">
+							A card: Header
+						</div>
+						<div class="matter">
+							A card: Matter
+						</div>
+						<div class="footer">
+							A card: Footer
+						</div>
+					</div>
+					<div class="card" style="width: 500px;">
+						<div class="header" style="background-color: #00BCD4;">
+							<p>
+								Login Form
+							</p>
+						</div>
+						<div class="matter">
+							Username: <input type="text" value="abc@xyz.com" class="material" style="width: 70%;"></input><br />
+							Password: <input type="password" value="Password" class="material" style="width: 70%;"></input><br />	
+						</div>
+						<div class="footer">
+							<!--<p>-->
+							<input type="button" class="material" value="Login" style="background-color: #009688;"></input>
+							<!--</p>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-3.jpg');">
+			<div class="slide-full">
+				<h1 align=center>Number Cards</h1>
+				<div class="page-row">
+					<div class="card card-number">
+						<div class="number" style="background-color: #61bde3;">
+							<p>16</p>
+						</div>
+						<div class="matter" style="background-color: #eee;">
+							of December.
+						</div>
+					</div>
+					<div class="card card-number">
+						<div class="number" style="background-image: url('sample-image.jpg'); background-size: cover;"></div>
+						<div class="matter" style="background-color: #eee;">Employees required!</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-3.jpg');">
+			<div class="slide-full">
+				<h1 align=center>Picture Cards</h1>
+				<div class="page-row">
+					<div class="card card-picture">
+						<div class="picture" style="background-image: url('sample-wallpaper.jpg');"></div>
+						<div class="caption">
+							<p>Picture Card. Caption.</p>
+						</div>
+					</div>
+					<div class="card card-picture">
+						<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');"></div>
+						<div class="caption">
+							<p>Picture Card. Caption.</p>
+						</div>
+					</div>
+					<div class="card card-picture">
+						<div class="picture" style="background-image: url('sample-wallpaper-3.jpg');"></div>
+						<div class="caption">
+							<p>Picture Card. Caption.</p>
+						</div>
+					</div>
+					<div class="card card-picture">
+						<div class="picture" style="background-image: url('sample-wallpaper-4.jpg');"></div>
+						<div class="caption">
+							<p>Picture Card. Caption.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-4.jpg');" id="HTMLdb">
+			<div class="slide">
+				<h1 align=center>Say hi to Dialogue Boxes. A new Thing in Webpage!!</h1>
+				Exapmle -
+				<div class="d-box">
+					<span class="toggle">Create a new ID</span>
+					<div class="content">
+						<div class="box">
+							<div class="header">
+								<p>New ID</p>
+							</div>
+							<div class="matter">
+								<p>
+									Name: &nbsp <input type=text class="material" value="Your Name" style="width: 70%;"></input><br />
+									Surname: &nbsp <input type=text class="material" value="Your Surame" style="width: 70%;"></input><br />
+									Age: &nbsp <input type=text class="material" value="Your Age" style="width: 70%;"></input>
+								</p>
+							</div>
+							<div class="footer">
+								<button class="close">Ok</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" id="SShow">
+			<div class="slide-full">
+				<div class="picture-slideshow">
+					<div class="picture" style="background-image: url('sample-wallpaper.jpg');">
+						<p>Beautiful Slideshow. Beautiful Waterfalls ...</p>
+					</div>
+					<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');">
+						<p>Himalayas !!</p>
+					</div>
+					<div class="picture picture-active" style="background-image: url('sample-wallpaper-3.jpg');">
+						<p>Bamboo Forests of Japan</p>
+					</div>
+					<div class="picture" style="background-image: url('sample-wallpaper-4.jpg');">
+						<p>Rare Double Rainbow :D</p>
+					</div>
+					<div class="picture" style="background-image: url('sample-wallpaper-5.jpg');">
+						<p>A rabbit</p>
+					</div>
+					
+					<div class="goleft"><p><</p></div><div class="goright"><p>></p></div>
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-5.jpg');" id="LAnimations">
+			<div class="slide">
+				<h1 align=center>Some Loading Animation for Webpage</h1>
+				<h3 align=center>Scroll Down !! </h3>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-5.jpg');">
+			<div class="slide-full">
+				<h1 align=center>Some Loading Animation for Webpage</h1>
+				<h3 align=right>More are to come!!</h3>
+				<div class="page-row">
+					<div class="loading loading-square-circle"></div>
+					<div class="loading loading-flappy-square"><div></div></div>
+					<div class="loading loading-two-circles" style="position: relative; top: -90px;"><div></div><div></div></div>
+					<!--<div class="loading loading-folding-squares"><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div></div>-->
+					<!--<div class="loading loading-circle"><div></div><div></div></div>-->
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-3.jpg');" id="tbn">
+			<div class="slide">
+				<h1 align=center>Tabination</h1>
+				Exapmle - Did you liked this framework?
+				<div class="tabination">
+					<div class="tabs">
+						<div class="item" tabtarget="info1">Love it!</div>
+						<div class="item" tabtarget="info2">Liked it</div>
+						<div class="item" tabtarget="info3">Okay....</div>
+						<div class="item" tabtarget="info4">Needs Improvement</div>
+						<div class="item" tabtarget="info5">Not Good</div>
+						<div class="item" tabtarget="info6">Poor</div>
+					</div>
+					<div class="information">
+						<div class="info" id="info1">
+							Thanks A Lot !!!
+						</div>
+						<div class="info" id="info2">
+							Thanks A Lot !!! But, I'll improve!
+						</div>
+						<div class="info" id="info3">
+							Please tell me why only 'okay'??? :(
+						</div>
+						<div class="info" id="info4">
+							I'll do my best to improve.
+						</div>
+						<div class="info" id="info5">
+							I'm sorry!
+						</div>
+						<div class="info" id="info6">
+							:(
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper.jpg');" id="mscrolling">
+			<div class="slide">
+				<h1 align=center>Did I left something?</h1>
+				<br /><br />
+				<h2 align=center>Oh Ya!</h2>
+				<br /><br />
+				<h1 align=center>This scrolling effect at background! <i>Masked Scrolling</i>. It's also there :D</h1>
+			</div>
+		</div>
+	</body>
+</html>
