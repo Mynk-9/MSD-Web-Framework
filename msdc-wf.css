@@ -269,8 +269,8 @@ div.nav {
 	/* Left */
 	div.nav-left {
 		position: fixed;
-		width: 350px;
-		min-width: 350px;
+		width: 25%;
+		min-width: 100px;
 		height: 100vh;
 		left: 0px; /* Added for initial purpose, will be manipulated by translate */
 		transform: translate(-100%, 0%);
@@ -325,12 +325,12 @@ div.nav {
 			to {transform: translate(0%, 0%);}
 		}
 		@keyframes nav-left-anim-nav-top-goLeft {
-			from {left: 350px;}
+			from {left: calc(25%);}
 			to {left: 0px;}
 		}
 		@keyframes nav-left-anim-nav-top-goRight {
 			from {left: 0px;}
-			to {left: 350px;}
+			to {left: calc(25%);}
 		}
 /* page-row */
 	div.page-row  {
@@ -340,7 +340,7 @@ div.nav {
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 	}
-	div.page-row div {
+	div.page-row > div {
 		display: inline-block;
 	}
 /* Masked Effect */
@@ -670,6 +670,40 @@ div.nav {
 		-webkit-transform: translate(-150%, -50%);
 		-ms-transform: translate(-150%, -50%);
 		transform: translate(-150%, -50%);
+	}
+/* Progress-bar */
+div.progress-bar {
+	width: 300px;
+	height: 25px;
+	background-color: #eee;
+	border-radius: 5px;
+	margin: 10px;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.5);
+}
+	div.progress-bar > div.progress {
+		background-color: #61bde3;
+		height: 100%;
+		left: 0px;
+		text-align: center;
+		border-radius: 5px;
+		/*box-shadow: 10px 0 5px -2px #888;*/
+	}
+	div.progress-bar > div.progress-striped {
+		background-image: repeating-linear-gradient(45deg, transparent, transparent 25px, rgba(255,255,255,.5) 25px, rgba(255,255,255,.5) 50px);
+	}
+	div.progress-bar > div.progress-animated {
+		transition: width 1s;
+		transition-timing-function: ease;
+	}
+	div.progress-bar > div.progress-striped-animated {
+		background-image: repeating-linear-gradient(45deg, transparent, transparent 25px, rgba(255,255,255,.5) 25px, rgba(255,255,255,.5) 50px);
+		transition: width 1s;
+		transition-timing-function: ease;
+		animation: anim-progress-bar-striped 2s linear infinite alternate;
+	}
+	@keyframes anim-progress-bar-striped {
+		from {background-position: 0px;}
+		to {background-position: 75px;}
 	}
 /* Loading Icon and Loading Page */
 div.loading-page {
