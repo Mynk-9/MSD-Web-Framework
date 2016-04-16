@@ -4,6 +4,7 @@
 		<title>MSD Web Framework</title>
 		<link rel="stylesheet" href="msdc-wf.css">
 		<script src="msdc-wf.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
 	
 	<body>
@@ -65,6 +66,11 @@
 			<div class="section">
 				<p>
 					<a role="inPageLink" toElement="#tbn" timetaken="2">Tabination</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#pgrsbrs" timetaken="2">Progress Bars</a>
 				</p>
 			</div>
 			<div class="section">
@@ -334,7 +340,39 @@
 				</div>
 			</div>
 		</div>
-		<div class="masked-page" style="background-image: url('sample-wallpaper.jpg');" id="mscrolling">
+		<div class="masked-page" style="background-image: url('sample-wallpaper.jpg');" id="pgrsbrs">
+			<div class="slide">
+				<h1 align=center>Progress Bars</h1>
+				<h3 align=center>Making progress bars are very easy now plus it has got flavours!</h3>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper.jpg');">
+			<div class="slide-full">
+				<div class="align-vertical-horizontal-center" style="width: 70%;">
+				<div class="page-row">
+					<div class="progress-bar" id=pb1 style="width: 70%;"><div class="progress" value="75%">Normal Progress</div></div>
+					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb1').firstChild, this.value);"></input>%
+				</div>
+				<br><br>
+				<div class="page-row">
+					<div class="progress-bar" id=pb2 style="width: 70%;"><div class="progress progress-striped" value="75%">Striped Progress</div></div>
+					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb2').firstChild, this.value);"></input>%
+				</div>
+				<br><br>
+				<div class="page-row">
+					<div class="progress-bar" id=pb3 style="width: 70%;"><div class="progress progress-animated" value="75%">Animatable Progress</div></div>
+					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb3').firstChild, this.value);"></input>%
+				</div>
+				<br><br>
+				<div class="page-row">
+					<div class="progress-bar" id=pb4 style="width: 70%;"><div class="progress progress-striped-animated" value="75%">Striped Animated Progress</div></div>
+					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb4').firstChild, this.value);"></input>%
+				</div>
+				<br><br>
+				</div>
+			</div>
+		</div>
+		<div class="masked-page" style="background-image: url('sample-wallpaper-2.jpg');" id="mscrolling">
 			<div class="slide">
 				<h1 align=center>Did I left something?</h1>
 				<br /><br />

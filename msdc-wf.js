@@ -7,11 +7,11 @@ window.onload = function() {
 			imported[i].src = list[i];
 			document.head.appendChild(imported[i]);
 		}
-	}
+	};
 	this.getListOfLibraries = function() {
 		var files = ['JS FW/msdc-wf-JSFW.js'];
 		return files;
-	}
+	};
 	loadAllLibraries();
 	
 	initializeNavBars();
@@ -20,8 +20,9 @@ window.onload = function() {
 	adjestDB();
 	adjestScrll();
 	adjestIT();
-	adjectLA();
-}
+	adjestLA();
+	adjestPB();
+};
 
 /* Navbar maintainance >> */
 	function initializeNavBars() {
@@ -35,7 +36,7 @@ window.onload = function() {
 			}
 			var fpg = document.getElementsByClassName('full-page-box');
 			for (i = 0; i < fpg.length; i++) {
-				fpg[i].style.height = 'calc(100vh - 70px);'
+				fpg[i].style.height = 'calc(100vh - 70px)';
 			}
 		}
 	}
@@ -116,7 +117,7 @@ window.onload = function() {
 						new $$(divs[q]).toggleClass(' active', '');
 					}
 					this.className += ' active';
-					var id = this.getAttribute('tabtarget')
+					var id = this.getAttribute('tabtarget');
 					new $$(document.getElementById(id)).addClass('active');
 				});
 			}
@@ -216,7 +217,7 @@ window.onload = function() {
 		}
 	}
 /* Loading Animation Maintainance */
-	function adjectLA() {
+	function adjestLA() {
 		var la = new Array(document.getElementsByClassName('loading-page').length);
 		la = document.getElementsByClassName('loading-page');
 		for (i = 0; i < la.length; i++) {
@@ -224,4 +225,16 @@ window.onload = function() {
 			la[i].innerHTML = '';
 			la[i].className = '';
 		}
+	}
+/* Progress Bar Maintainance */
+	function adjestPB() {
+		var pb = new Array(document.getElementsByClassName('progress-bar').length);
+		pb = document.getElementsByClassName('progress-bar');
+		for (i = 0; i < pb.length; i++) {
+			var pbp = pb[i].getElementsByClassName('progress')[0];
+			pbp.style.width = pbp.getAttribute('value');
+		}
+	}
+	function changeProgress(pBar, progress) {
+		pBar.style.width = (parseInt(progress) + '%');
 	}
