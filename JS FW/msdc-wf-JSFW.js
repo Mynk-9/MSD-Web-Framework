@@ -25,6 +25,14 @@ function $$(element) {
 	this.setEvent = function(evnt, fun) {
 		element.addEventListener(evnt, fun);
 	}
+	this.isMobile = function() {
+		var q = false;
+		if (document.body.clientWidth < 600) q = true;
+		return q;
+	}
+	this.docHeight = function() {
+		return document.body.clientHeight;
+	}
 	
 	// External
 	this.loadScript = function(path) {

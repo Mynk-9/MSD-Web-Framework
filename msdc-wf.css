@@ -19,13 +19,17 @@ body {
 	cursor: pointer;
 }
 .align-vertical-horizontal-center {
-	margin: 0;
+	/*margin: 0;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-right: -50%;
 	-webkit-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
 	transform: translate(-50%, -50%);
 }
 .align-horizontal-center {
@@ -342,6 +346,7 @@ div.nav {
 	}
 	div.page-row > div {
 		display: inline-block;
+		vertical-align: top;
 	}
 /* Masked Effect */
 	div.masked-page {
@@ -354,9 +359,9 @@ div.nav {
 	div.masked-page div.slide {
 		width: 50%;
 		height: 70%;
-		left: 25%;
-		top: 15%;
-		position: relative;
+		position: absolute;
+		left: 50%; top: 50%;
+		transform: translate(-50%, -50%);
 		background: rgba(255,255,255,0.5);
 		overflow: auto;
 	}
