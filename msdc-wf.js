@@ -10,6 +10,7 @@ window.onload = function() {
 				imported[i] = document.createElement('link');
 				imported[i].setAttribute('rel', 'stylesheet');
 				imported[i].href = list[i];
+				if (list[i] == 'msdc-wf-m.css' && this.usingMin()) {imported[i].href = 'msdc-wf-m.min.css';}
 			}
 			document.head.appendChild(imported[i]);
 		}
@@ -21,6 +22,15 @@ window.onload = function() {
 	this.isLibraryCSS = function(lib) {
 		var q = false;
 		if (lib.indexOf('.css') != -1) q = true;
+		return q;
+	};
+	this.usingMin = function() {
+		var q = false;
+		var z = new Array(document.getElementsByTagName('link').length);
+		z = document.getElementsByTagName('link');
+		for (i = 0; i < z.length; i++) {
+			if (z[i].getAttribute('href').indexOf('msdc-wf.min.css') != -1) {q = true;}
+		}
 		return q;
 	};
 	loadAllLibraries();
