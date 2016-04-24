@@ -1,4 +1,4 @@
-/* Copyright© 2016 Mayank Mathur 
+/* Copyright © 2016 Mayank Mathur 
 see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
 */
 window.onload = function() {
@@ -13,7 +13,6 @@ window.onload = function() {
 				imported[i] = document.createElement('link');
 				imported[i].setAttribute('rel', 'stylesheet');
 				imported[i].href = list[i];
-				if (list[i] == 'msdc-wf-m.css' && this.usingMin()) {imported[i].setAttribute('href','msdc-wf-m.min.css');}
 			}
 			
 			document.head.appendChild(imported[i]);
