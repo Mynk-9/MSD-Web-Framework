@@ -1,3 +1,6 @@
+/* Copyright© 2016 Mayank Mathur 
+see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
+*/
 function $$(element) {
 	
 	// Class-Id Management
