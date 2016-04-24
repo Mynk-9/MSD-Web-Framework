@@ -80,6 +80,73 @@ a.in-page-link {
 	cursor: pointer;
 }
 
+/* Scroll Bar */
+	body {
+		overflow-y: auto;
+		margin-right: 0px;
+	}
+	div.scroll {
+		position: fixed;
+		top: 0px;
+		left: calc(100vw - 20px);
+		height: 100vh;
+		width:  20px;
+		background-color: #eee;
+		background-color: rgba(0,0,0,0.25);
+		border-radius: 10px;
+		z-index: 100;
+	}
+	div.scroll > div.top, div.scroll > div.bottom {
+		position: absolute;
+		height: 20px;
+		width: 100%;
+		top: 0px;
+		background-color: #F44336;
+		border-radius: 10px;
+	}
+	div.scroll > div.top:active, div.scroll > div.bottom:active {
+		background-color: #B71C1C;
+	}
+	div.scroll > div.bottom {
+		top: calc(100% - 20px);
+	}
+	div.scroll > div.scr {
+		position: absolute;
+		height: calc(100% - 40px);
+		top: 20px;
+		width: 100%;
+		background-color: #61bde3;
+		border-radius: 5px;
+	}
+	div.scroll > div.scr:active {
+		background-color: #2196F3;
+	}
+	div.scroll.scrll-hidden {
+		animation: hidden 1s ease 0s 1 normal;
+		animation-fill-mode: forwards;
+	}
+	div.scroll.scrll-active {
+		animation: active 1s ease 0s 1 normal;
+	}
+	@keyframes hidden {
+		from {
+			transform: translate(0%, 0%);
+		}
+		to {
+			transform: translate(100%, 0%);
+		}
+	}
+	@keyframes active {
+		from {
+			transform: translate(100%, 0%);
+		}
+		to {
+			transform: translate(0%, 0%);
+		}
+	}
+	body::-webkit-scrollbar {
+		display: none;
+	}
 /* Cards */
 div.card {
 	-webkit-box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.4), 0 -5px 20px 0 rgba(0, 0, 0, 0.2);

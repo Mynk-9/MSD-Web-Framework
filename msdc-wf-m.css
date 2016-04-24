@@ -79,4 +79,8 @@
 		height: auto;
 		min-height: 100%;
 	}
+	/* Scroll Bar */
+	div.scroll, div.scroll div {
+		display: none;
+	}
 }
