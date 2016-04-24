@@ -18,7 +18,7 @@ window.onload = function() {
 		}
 	};
 	this.getListOfLibraries = function() {
-		var files = ['{link}/JS FW/msdc-wf-JSFW.js', 'msdc-wf-m.css'];
+		var files = ['JS FW/msdc-wf-JSFW.js', 'msdc-wf-m.css'];
 		return files;
 	};
 	this.isLibraryCSS = function(lib) {
