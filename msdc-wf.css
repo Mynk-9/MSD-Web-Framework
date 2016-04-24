@@ -681,8 +681,8 @@ div.nav {
 			to {opacity: 1;}
 		}
 	div.d-box div.content div.box {
-		min-width: 50%;
-		min-height: 50%;
+		min-width: 90%;
+		min-height: 90%;
 		background-color: #eee;
 		
 		margin: 0;
