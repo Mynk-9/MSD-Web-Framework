@@ -12,7 +12,9 @@ window.onload = function() {
 				imported[i].href = list[i];
 				if (list[i] == 'msdc-wf-m.css' && this.usingMin()) {imported[i].href = 'msdc-wf-m.min.css';}
 			}
+			
 			document.head.appendChild(imported[i]);
+			console.log(imported[i]);
 		}
 	};
 	this.getListOfLibraries = function() {
@@ -45,6 +47,7 @@ window.onload = function() {
 	adjestPB();
 	adjestMS();
 	setTimeout(function(){adjestformobile();}, 3000);
+	adjestScrollBar();
 };
 
 /* Navbar maintainance >> */
@@ -291,4 +294,120 @@ window.onload = function() {
 			var fp = mskd[i].getElementsByClassName('slide-full')[0];
 			if (typeof fp != 'undefined') {mskd[i].style.height = fp.offsetHeight + 'px'; /*console.log(fp.offsetHeight);*/}
 		}
+	}
+/* Scroll Bar */
+	function adjestScrollBar() {
+		var vh = window.top.innerHeight;
+		var fh = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight, document.body.scrollHeight, document.body.offsetHeight);
+		
+		var scrollBox = new Array(document.getElementsByClassName('scroll').length);
+		scrollBox = document.getElementsByClassName('scroll');
+		var sb = scrollBox[0];							//Scroll Box
+		var sh = sb.clientHeight;
+		
+		var sbr = sb.getElementsByClassName('scr')[0];	//Scroll Bar
+		var x = Math.max(sb.getElementsByClassName('top')[0].offsetHeight, sb.getElementsByClassName('bottom')[0].offsetHeight);
+		var bh = ((vh * sh) - (2 * vh * x)) / fh;
+		
+		var robject = sbr.getBoundingClientRect();
+		var y = robject.top - 20;
+		var scrlH = sh - (2 * x);
+		
+		var doc = document.documentElement;
+		var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+		var height = doc.offsetHeight;
+		
+		this.refreshValues = function() {
+			vh = window.top.innerHeight;
+			fh = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight, document.body.scrollHeight, document.body.offsetHeight);
+			
+			scrollBox = new Array(document.getElementsByClassName('scroll').length);
+			scrollBox = document.getElementsByClassName('scroll');
+			sb = scrollBox[0];							//Scroll Box
+			sh = sb.clientHeight;
+			
+			sbr = sb.getElementsByClassName('scr')[0];	//Scroll Bar
+			x = Math.max(sb.getElementsByClassName('top')[0].offsetHeight, sb.getElementsByClassName('bottom')[0].offsetHeight);
+			bh = ((vh * sh) - (2 * vh * x)) / fh;
+			
+			robject = sbr.getBoundingClientRect();
+			y = robject.top - 20;
+			scrlH = sh - (2 * x);
+			
+			doc = document.documentElement;
+			top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+			height = doc.offsetHeight;
+		}
+		
+		setInterval(function() {
+			refreshValues();			
+			sbr.style.height = bh + 'px';
+		}, 1000);
+		
+		// Now movement
+		
+		var msdn = false; var evnt; var my = 0, my0 = 0;
+		sbr.addEventListener('mousedown', function() {msdn = true;});
+		sbr.addEventListener('mouseup', function() {msdn = false;});
+		sbr.addEventListener('mousemove', function(event) {evnt = event;});
+		document.body.addEventListener('mousemove', function(event) {
+			if (event.clientX >= document.body.clientWidth - sb.clientWidth && sb.className.indexOf('scrll-hidden') != -1) {
+				sb.className = sb.className.replace(' scrll-hidden', '');
+				sb.className += ' scrll-active';
+			} else if (event.clientX < document.body.clientWidth - sb.clientWidth && sb.className.indexOf('scrll-active') != -1 && !msdn){
+				sb.className = sb.className.replace(' scrll-active', '');
+				sb.className += ' scrll-hidden';
+			} else if (event.clientX < document.body.clientWidth - sb.clientWidth && sb.className.indexOf('scrll-active') == -1 && sb.className.indexOf('scrll-hidden') == -1){
+				sb.className += ' scrll-hidden';
+			}
+		});
+		
+		// Scroll Bar Movement
+		setInterval(function() {
+			if (msdn) {
+				refreshValues();
+				
+				my = evnt.clientY;
+				if (my0 != 0) {
+					var d = my - my0;
+					if (robject.top + d >= 20 && robject.top + d + bh <= vh - 20) {
+						sbr.style.top = (robject.top + d) + 'px';
+						scroll();
+					}
+				}
+				my0 = my;
+			} else {
+				my = my0 = y = scrlH = 0;
+			}
+		}, 1);
+		
+		// Scroll the Document
+		this.scroll = function() {
+			refreshValues();
+			var yc = y * height / (sh - (2*x));
+			window.scrollTo(0,yc);
+		}
+		
+		// Scroll Scroll Bar According to the document
+		setInterval(function() {
+			if (!msdn) {
+				refreshValues();
+				
+				this.getH = function() {							
+					var yc = top;
+					y = yc * (sh - (2*x)) / height;
+					y += 20;
+					return y;
+				}
+				sbr.style.top = getH() + 'px';
+			}
+		}, 10);
+		
+		// Make use of top and bottom buttons
+		var topButton = sb.getElementsByClassName('top')[0];
+		var bottomButton = sb.getElementsByClassName('bottom')[0];
+		topButton.addEventListener('click', function() {window.scrollBy(0, -5);})
+		topButton.addEventListener('mousedown', function() {window.scrollBy(0, -5);})
+		bottomButton.addEventListener('click', function() {window.scrollBy(0, 5);})
+		bottomButton.addEventListener('mousedown', function() {window.scrollBy(0, 5);})
 	}
