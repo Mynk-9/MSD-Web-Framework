@@ -3,7 +3,6 @@ window.onload = function() {
 		var list = this.getListOfLibraries();
 		var imported = new Array(list.length);
 		for (i = 0; i < list.length; i++) {
-			list[i].replace('{link}', document.getElementsByTagName('script')[0]
 			if (this.isLibraryCSS(list[i]) != true) {
 				imported[i] = document.createElement('script');
 				imported[i].src = list[i];
