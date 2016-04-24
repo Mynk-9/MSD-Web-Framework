@@ -10,6 +10,7 @@ window.onload = function() {
 				imported[i] = document.createElement('link');
 				imported[i].setAttribute('rel', 'stylesheet');
 				imported[i].href = list[i];
+				console.log(imported[i]);
 				if (list[i] == 'msdc-wf-m.css' && this.usingMin()) {imported[i].setAttribute('href','msdc-wf-m.min.css');}
 			}
 			
