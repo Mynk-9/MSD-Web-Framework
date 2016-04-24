@@ -1,3 +1,6 @@
+/* Copyright© 2016 Mayank Mathur 
+see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
+*/
 window.onload = function() {
 	this.loadAllLibraries = function() {
 		var list = this.getListOfLibraries();
@@ -10,7 +13,6 @@ window.onload = function() {
 				imported[i] = document.createElement('link');
 				imported[i].setAttribute('rel', 'stylesheet');
 				imported[i].href = list[i];
-				console.log(imported[i]);
 				if (list[i] == 'msdc-wf-m.css' && this.usingMin()) {imported[i].setAttribute('href','msdc-wf-m.min.css');}
 			}
 			
