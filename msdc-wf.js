@@ -353,7 +353,10 @@ window.onload = function() {
 		
 		var msdn = false; var evnt; var my = 0, my0 = 0;
 		sbr.addEventListener('mousedown', function() {msdn = true;});
+		sb.addEventListener('mousedown', function() {msdn = true;});
 		sbr.addEventListener('mouseup', function() {msdn = false;});
+		sb.addEventListener('mouseup', function() {msdn = false;});
+		
 		sbr.addEventListener('mousemove', function(event) {evnt = event;});
 		document.body.addEventListener('mousemove', function(event) {
 			if (event.clientX >= document.body.clientWidth - sb.clientWidth && sb.className.indexOf('scrll-hidden') != -1 && body.style.overflowY !== 'hidden') {
