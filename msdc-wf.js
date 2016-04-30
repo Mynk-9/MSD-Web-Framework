@@ -1,6 +1,8 @@
 /* Copyright © 2016 Mayank Mathur 
 see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
 */
+var library_files = [];
+
 window.onload = function() {
 	this.loadAllLibraries = function() {
 		var list = this.getListOfLibraries();
@@ -11,21 +13,20 @@ window.onload = function() {
 				imported[i].src = list[i];
 			} else {
 				imported[i] = document.createElement('link');
-				imported[i].setAttribute('rel', 'stylesheet');
-				imported[i].href = list[i];
+				var zzz = imported[i];
+				zzz.setAttribute('rel', 'stylesheet');
+				zzz.href = list[i];
 			}
 			
 			document.head.appendChild(imported[i]);
-			console.log(imported[i]);
 		}
 	};
 	this.getListOfLibraries = function() {
-		var files = ['JS FW/msdc-wf-JSFW.js', 'msdc-wf-m.css'];
-		return files;
+		return library_files;
 	};
 	this.isLibraryCSS = function(lib) {
 		var q = false;
-		if (lib.indexOf('.css') != -1) q = true;
+		if (lib.indexOf('.css') != -1) {q = true;}
 		return q;
 	};
 	this.usingMin = function() {
@@ -93,7 +94,7 @@ window.onload = function() {
 	}
 	function isMobile() {
 		var q = false;
-		if (document.body.clientWidth < 600) q = true;
+		if (document.body.clientWidth < 600) {q = true;}
 		return q;
 	}
 /* Picture Slide Show Maintainance */
@@ -299,6 +300,8 @@ window.onload = function() {
 	}
 /* Scroll Bar */
 	function adjestScrollBar() {
+		var body = document.body;
+		
 		var vh = window.top.innerHeight;
 		var fh = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight, document.body.scrollHeight, document.body.offsetHeight);
 		
@@ -353,7 +356,7 @@ window.onload = function() {
 		sbr.addEventListener('mouseup', function() {msdn = false;});
 		sbr.addEventListener('mousemove', function(event) {evnt = event;});
 		document.body.addEventListener('mousemove', function(event) {
-			if (event.clientX >= document.body.clientWidth - sb.clientWidth && sb.className.indexOf('scrll-hidden') != -1) {
+			if (event.clientX >= document.body.clientWidth - sb.clientWidth && sb.className.indexOf('scrll-hidden') != -1 && body.style.overflowY !== 'hidden') {
 				sb.className = sb.className.replace(' scrll-hidden', '');
 				sb.className += ' scrll-active';
 			} else if (event.clientX < document.body.clientWidth - sb.clientWidth && sb.className.indexOf('scrll-active') != -1 && !msdn){
@@ -366,7 +369,7 @@ window.onload = function() {
 		
 		// Scroll Bar Movement
 		setInterval(function() {
-			if (msdn) {
+			if (msdn && body.style.overflowY !== 'hidden') {
 				refreshValues();
 				
 				my = evnt.clientY;

@@ -82,6 +82,9 @@ a.in-page-link {
 	
 	cursor: pointer;
 }
+.text-center {
+	text-align: center;
+}
 
 /* Scroll Bar */
 	body {
