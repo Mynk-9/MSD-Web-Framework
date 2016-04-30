@@ -13,9 +13,8 @@ window.onload = function() {
 				imported[i].src = list[i];
 			} else {
 				imported[i] = document.createElement('link');
-				var zzz = imported[i];
-				zzz.setAttribute('rel', 'stylesheet');
-				zzz.href = list[i];
+				imported[i].setAttribute('rel', 'stylesheet');
+				imported[i].href = list[i];
 			}
 			
 			document.head.appendChild(imported[i]);
