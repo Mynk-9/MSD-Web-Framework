@@ -16,6 +16,14 @@
 					library_files.push('my url');
 					
 				But take precaution while naming other variables as library_files is GLOBAL.
+				
+				Also, if you need a function to be executed on load use this syntax instead of window.onload :
+				
+					onload_functions.push(function() {
+						//Your function
+					});
+					
+				But take precaution while naming other variables as onload_functions is GLOBAL.
 			*/
 		</script>
 	</head>
@@ -41,7 +49,7 @@
 			</div>
 			<div class="center">
 				<p>
-					<span class="title">MSD Web Framework</span>
+					<span class="title no-select">MSD Web Framework</span>
 				</p>
 			</div>
 			<div class="right">
@@ -101,6 +109,11 @@
 					Visit the <a href="https://github.com/Mynk-9/MSD-Web-Framework">GitHub Page</a>
 				</p>
 			</div>
+			<div class="section">
+				<p>
+					Visit the <a href="http://mynk-9.github.io/MSD-Corp./">MSD Corp. page</a>
+				</p>
+			</div>
 		</div>
 		<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="home">
 			<div class="slide">
@@ -116,7 +129,7 @@
 		</div>
 		<div class="masked-page" maskedbkground="sample-wallpaper-2.svg">
 			<div class="slide-full">
-				<table class="table highlight-alternate" style="width: 50%;">
+			<table class="table highlight-alternate" style="width: 50%;">
 				<tr>
 					<td>Highlight-Alternate</td>
 					<td>Table</td>

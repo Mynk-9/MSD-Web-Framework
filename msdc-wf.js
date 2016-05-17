@@ -2,6 +2,7 @@
 see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
 */
 var library_files = [];
+var onload_functions = [];
 
 window.onload = function() {
 	this.loadAllLibraries = function() {
@@ -19,10 +20,19 @@ window.onload = function() {
 			
 			document.head.appendChild(imported[i]);
 		}
+		
+		executeOnload();
 	};
 	this.getListOfLibraries = function() {
 		return library_files;
 	};
+	this.executeOnload = function() {
+		for (i = 0; i < onload_functions.length; i++) {
+			if (typeof onload_functions[i] === 'function') {
+				onload_functions[i]();
+			}
+		}
+	}
 	this.isLibraryCSS = function(lib) {
 		var q = false;
 		if (lib.indexOf('.css') != -1) {q = true;}
@@ -49,16 +59,21 @@ window.onload = function() {
 	adjestPB();
 	adjestMS();
 	setTimeout(function(){adjestformobile();}, 3000);
-	adjestScrollBar();
+	if (document.body.querySelectorAll('.scroll').length != 0) {
+		var style = document.createElement('style');
+		style.innerHTML = "body::-webkit-scrollbar {display: none;}";
+		document.head.appendChild(style);
+		adjestScrollBar();
+	}
 };
 
 /* Navbar maintainance >> */
 	function initializeNavBars() {
-		if (document.getElementsByClassName('nav nav-top').length > 0) {
+		if (document.querySelectorAll('.nav-top').length > 0) {
 			document.body.style.padding = '70px 0px 0px 0px'; /* Setting Body padding */
 			
-			var mbm = new Array(document.getElementsByClassName('masked-page').length);
-			mbm = document.getElementsByClassName('masked-page');
+			var mbm = new Array(document.querySelectorAll('.masked-page').length);
+			mbm = document.querySelectorAll('.masked-page');
 			for (i = 0; i < mbm.length; i++) {
 				if (isMobile() != true) {
 					mbm[i].style.height =  'calc(100vh - 70px)';
@@ -66,29 +81,31 @@ window.onload = function() {
 					mbm[i].style.minHeight = ((window.innerHeight) - 70) + 'px';
 				}
 			}
-			var fpg = document.getElementsByClassName('full-page-box');
+			var fpg = document.querySelectorAll('.full-page-box');
 			for (i = 0; i < fpg.length; i++) {
 				if (isMobile() != true) {
 					fpg[i].style.height = 'calc(100vh - 70px)';
 				} else {
-					fgp[i].style.height = ((window.innerHeight) - 70) + 'px';
+					fpg[i].style.height = ((window.innerHeight) - 70) + 'px';
 				}
 			}
 		}
 	}
 	function toggleLeftNav() {
-		var ln = document.getElementsByClassName('nav nav-left')[0];
-		var tn = new Array(document.getElementsByClassName('nav nav-top').length);
-		tn = document.getElementsByClassName('nav nav-top')[0];
-		if (ln.className.indexOf('nav-left-anim-go-left') != -1) {
-			new $$(ln).toggleClass('nav-left-anim-go-left', 'nav-left-anim-go-right');
-			new $$(tn).toggleClass('nav-left-anim-nav-top-go-left', 'nav-left-anim-nav-top-go-right');
-		} else if (ln.className.indexOf('nav-left-anim-go-right') != -1) {
-			new $$(ln).toggleClass('nav-left-anim-go-right', 'nav-left-anim-go-left');
-			new $$(tn).toggleClass('nav-left-anim-nav-top-go-right', 'nav-left-anim-nav-top-go-left');
-		} else {
-			new $$(ln).addClass('nav-left-anim-go-right');
-			new $$(tn).addClass('nav-left-anim-nav-top-go-right');
+		if (document.querySelectorAll('.nav-left').length !== 0) {
+			var ln = document.querySelectorAll('.nav-left')[0];
+			var tn = new Array(document.querySelectorAll('.nav-top').length);
+			tn = document.querySelectorAll('.nav-top')[0];
+			if (ln.className.indexOf('nav-left-anim-go-left') != -1) {
+				new $$(ln).toggleClass('nav-left-anim-go-left', 'nav-left-anim-go-right');
+				new $$(tn).toggleClass('nav-left-anim-nav-top-go-left', 'nav-left-anim-nav-top-go-right');
+			} else if (ln.className.indexOf('nav-left-anim-go-right') != -1) {
+				new $$(ln).toggleClass('nav-left-anim-go-right', 'nav-left-anim-go-left');
+				new $$(tn).toggleClass('nav-left-anim-nav-top-go-right', 'nav-left-anim-nav-top-go-left');
+			} else {
+				new $$(ln).addClass('nav-left-anim-go-right');
+				new $$(tn).addClass('nav-left-anim-nav-top-go-right');
+			}
 		}
 	}
 	function isMobile() {
@@ -98,18 +115,18 @@ window.onload = function() {
 	}
 /* Picture Slide Show Maintainance */
 	function adjestPSS() {
-		var pss = document.getElementsByClassName('picture-slideshow');
+		var pss = document.querySelectorAll('.picture-slideshow');
 		for (i = 0; i < pss.length; i++) {
 			var left, right;
-			left = pss[i].getElementsByClassName('goleft')[0];
-			right = pss[i].getElementsByClassName('goright')[0];
+			left = pss[i].querySelectorAll('.goleft')[0];
+			right = pss[i].querySelectorAll('.goright')[0];
 			var pssx = pss[i];	/* Done because pss[i] returns an 'undefined' value. Found it using console.log(typeof pss[i]); */
 			left.addEventListener('click', function() {ssgoleft(pssx);});
 			right.addEventListener('click', function() {ssgoright(pssx);});
 		}
 	}
 	function ssgoleft(ss) {
-		var pics = ss.getElementsByClassName('picture');
+		var pics = ss.querySelectorAll('.picture');
 		var z = 0;
 		for (i = 0; i < pics.length; i++) {
 			if (pics[i].className.indexOf('picture-active') != -1) {
@@ -127,7 +144,7 @@ window.onload = function() {
 		new $$(pics[z]).addClass('picture-active');
 	}
 	function ssgoright(ss) {
-		var pics = ss.getElementsByClassName('picture');
+		var pics = ss.querySelectorAll('.picture');
 		var z = 0;
 		for (i = 0; i < pics.length; i++) {
 			if (pics[i].className.indexOf('picture-active') != -1) {
@@ -146,11 +163,11 @@ window.onload = function() {
 	}
 /* Tabination Maintainance */
 	function adjestTBS() {
-		var tabins = document.getElementsByClassName('tabination');
+		var tabins = document.querySelectorAll('.tabination');
 		for (i = 0; i < tabins.length; i++) {
 			var tabs, divs;
-			tabs = tabins[i].getElementsByClassName('tabs')[0].getElementsByClassName('item');
-			divs = tabins[i].getElementsByClassName('information')[0].getElementsByClassName('info');
+			tabs = tabins[i].querySelectorAll('.tabs')[0].querySelectorAll('.item');
+			divs = tabins[i].querySelectorAll('.information')[0].querySelectorAll('.info');
 			for (ii = 0; ii < tabs.length; ii++) {
 				tabs[ii].addEventListener('click', function() {
 					for (q = 0; q < tabs.length; q++) {
@@ -166,15 +183,15 @@ window.onload = function() {
 	}
 /* Dialogue Box Maintainance */
 	function adjestDB() {
-		var dbs = document.getElementsByClassName('d-box');
+		var dbs = document.querySelectorAll('.d-box');
 		for (i = 0; i < dbs.length; i++) {
 			var db = dbs[i];
-			dbs[i].getElementsByClassName('footer')[0].getElementsByClassName('close')[0].addEventListener('click', function() {
-				new $$(db.getElementsByClassName('content')[0]).toggleClass(' active', '');
+			dbs[i].querySelectorAll('.footer')[0].querySelectorAll('.close')[0].addEventListener('click', function() {
+				new $$(db.querySelectorAll('.content')[0]).toggleClass(' active', '');
 				document.body.style.overflow = 'auto';
 			});
-			dbs[i].getElementsByClassName('toggle')[0].addEventListener('click', function() {
-				new $$(db.getElementsByClassName('content')[0]).addClass('active');
+			dbs[i].querySelectorAll('.toggle')[0].addEventListener('click', function() {
+				new $$(db.querySelectorAll('.content')[0]).addClass('active');
 				document.body.style.overflow = 'hidden';
 			});
 		}
@@ -221,7 +238,7 @@ window.onload = function() {
 						}
 						function getWinYOset() {
 							var y = 0;
-							if (document.getElementsByClassName('nav nav-top').length > 0) {
+							if (document.querySelectorAll('.nav-top').length > 0) {
 								y = (window.pageYOffset + 70);
 							} else {
 								y = window.pageYOffset;
@@ -235,8 +252,8 @@ window.onload = function() {
 	}
 /* Interactive Table Maintainance */
 	function adjestIT() {
-		var t = new Array(document.getElementsByClassName('table').length);
-		t = document.getElementsByClassName('table');
+		var t = new Array(document.querySelectorAll('.table').length);
+		t = document.querySelectorAll('.table');
 		for (i = 0; i < t.length; i++) {
 			if (t[i].className.indexOf('interactive') != -1) {
 				var rws = new Array(t[i].rows.length);
@@ -259,8 +276,8 @@ window.onload = function() {
 	}
 /* Loading Animation Maintainance */
 	function adjestLA() {
-		var la = new Array(document.getElementsByClassName('loading-page').length);
-		la = document.getElementsByClassName('loading-page');
+		var la = new Array(document.querySelectorAll('.loading-page').length);
+		la = document.querySelectorAll('.loading-page');
 		for (i = 0; i < la.length; i++) {
 			la[i].setAttribute('style', 'display: none;');
 			la[i].innerHTML = '';
@@ -269,10 +286,10 @@ window.onload = function() {
 	}
 /* Progress Bar Maintainance */
 	function adjestPB() {
-		var pb = new Array(document.getElementsByClassName('progress-bar').length);
-		pb = document.getElementsByClassName('progress-bar');
+		var pb = new Array(document.querySelectorAll('.progress-bar').length);
+		pb = document.querySelectorAll('.progress-bar');
 		for (i = 0; i < pb.length; i++) {
-			var pbp = pb[i].getElementsByClassName('progress')[0];
+			var pbp = pb[i].querySelectorAll('.progress')[0];
 			pbp.style.width = pbp.getAttribute('value');
 		}
 	}
@@ -281,8 +298,8 @@ window.onload = function() {
 	}
 /* Masked Scrolling Maintainance */
 	function adjestMS() {
-		var mskd = new Array(document.getElementsByClassName('masked-page').length);
-		mskd = document.getElementsByClassName('masked-page');
+		var mskd = new Array(document.querySelectorAll('.masked-page').length);
+		mskd = document.querySelectorAll('.masked-page');
 		for (i = 0; i < mskd.length; i++) {
 			var bk = mskd[i].getAttribute('maskedbkground');
 			if (bk != null) {mskd[i].style.backgroundImage = 'url(' + bk + ')';}
@@ -290,10 +307,10 @@ window.onload = function() {
 	}
 /* Mobile Device Maintainance */
 	function adjestformobile() {
-		var mskd = new Array(document.getElementsByClassName('masked-page').length);
-		mskd = document.getElementsByClassName('masked-page');
+		var mskd = new Array(document.querySelectorAll('.masked-page').length);
+		mskd = document.querySelectorAll('.masked-page');
 		for (i = 0; i < mskd.length; i++) {
-			var fp = mskd[i].getElementsByClassName('slide-full')[0];
+			var fp = mskd[i].querySelectorAll('.slide-full')[0];
 			if (typeof fp != 'undefined') {mskd[i].style.height = fp.offsetHeight + 'px'; /*console.log(fp.offsetHeight);*/}
 		}
 	}
@@ -304,13 +321,13 @@ window.onload = function() {
 		var vh = window.top.innerHeight;
 		var fh = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight, document.body.scrollHeight, document.body.offsetHeight);
 		
-		var scrollBox = new Array(document.getElementsByClassName('scroll').length);
-		scrollBox = document.getElementsByClassName('scroll');
+		var scrollBox = new Array(document.querySelectorAll('.scroll').length);
+		scrollBox = document.querySelectorAll('.scroll');
 		var sb = scrollBox[0];							//Scroll Box
 		var sh = sb.clientHeight;
 		
-		var sbr = sb.getElementsByClassName('scr')[0];	//Scroll Bar
-		var x = Math.max(sb.getElementsByClassName('top')[0].offsetHeight, sb.getElementsByClassName('bottom')[0].offsetHeight);
+		var sbr = sb.querySelectorAll('.scr')[0];	//Scroll Bar
+		var x = Math.max(sb.querySelectorAll('.top')[0].offsetHeight, sb.querySelectorAll('.bottom')[0].offsetHeight);
 		var bh = ((vh * sh) - (2 * vh * x)) / fh;
 		
 		var robject = sbr.getBoundingClientRect();
@@ -325,13 +342,13 @@ window.onload = function() {
 			vh = window.top.innerHeight;
 			fh = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight, document.body.scrollHeight, document.body.offsetHeight);
 			
-			scrollBox = new Array(document.getElementsByClassName('scroll').length);
-			scrollBox = document.getElementsByClassName('scroll');
+			scrollBox = new Array(document.querySelectorAll('.scroll').length);
+			scrollBox = document.querySelectorAll('.scroll');
 			sb = scrollBox[0];							//Scroll Box
 			sh = sb.clientHeight;
 			
-			sbr = sb.getElementsByClassName('scr')[0];	//Scroll Bar
-			x = Math.max(sb.getElementsByClassName('top')[0].offsetHeight, sb.getElementsByClassName('bottom')[0].offsetHeight);
+			sbr = sb.querySelectorAll('.scr')[0];	//Scroll Bar
+			x = Math.max(sb.querySelectorAll('.top')[0].offsetHeight, sb.querySelectorAll('.bottom')[0].offsetHeight);
 			bh = ((vh * sh) - (2 * vh * x)) / fh;
 			
 			robject = sbr.getBoundingClientRect();
@@ -411,8 +428,8 @@ window.onload = function() {
 		}, 10);
 		
 		// Make use of top and bottom buttons
-		var topButton = sb.getElementsByClassName('top')[0];
-		var bottomButton = sb.getElementsByClassName('bottom')[0];
+		var topButton = sb.querySelectorAll('.top')[0];
+		var bottomButton = sb.querySelectorAll('.bottom')[0];
 		topButton.addEventListener('click', function() {window.scrollBy(0, -5);})
 		topButton.addEventListener('mousedown', function() {window.scrollBy(0, -5);})
 		bottomButton.addEventListener('click', function() {window.scrollBy(0, 5);})

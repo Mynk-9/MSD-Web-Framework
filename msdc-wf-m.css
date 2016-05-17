@@ -21,18 +21,28 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 	h6 {
 		font-size: 100%;
 	}
+	.mega-box {
+		height: 50vh;
+	}
+	span.title {
+		font-size: 1.5em;
+		font-weight: lighter;
+	}
 	/* Left Nav */
 	div.nav-left {
-		
 		position: fixed;
 		width: 100vw;
-		height: 50vh;
+		min-height: 150px;
+		height: 300px;
 		left: 0px;
 		top: 0px;
 		transform: translate(0%, -100%);
 		overflow-y: auto;
 		background-color: #fff;
 		z-index: 9;
+	}
+	div.nav-left > div.section:hover {
+		background-color: #aaa;
 	}
 	@keyframes nav-left-anim-goLeft {
 		from {transform: translate(0%, calc(0% + 70px));}
