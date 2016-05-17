@@ -21,15 +21,72 @@ body {
 	
 	cursor: pointer;
 }
+input[type=text].material, input[type=password].material {
+	padding: 10px 10px 10px 10px;
+	margin: 5px 5px 5px 5px;
+	font-size: 0.833em;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: lighter;
+}
+div.full-page-box {
+	width: 100%;
+	height: 100vh;
+}
+.bright-bg {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+a.in-page-link {
+	-webkit-touch-callout: none;	/* iOS Safari */
+	-webkit-user-select: none;		/* Chrome/Safari/Opera */
+	-khtml-user-select: none;		/* Konqueror */
+	-moz-user-select: none;			/* Firefox */
+	-ms-user-select: none;			/* IE/Edge */
+	user-select: none;				/* non-prefixed version, currently not supported by any browser */
+	
+	cursor: pointer;
+}
+.text-center {
+	text-align: center;
+}
+.no-padding {
+	padding: 0px;
+}
+.no-margin {
+	margin: 0px;
+}
+div.mega-box {
+	position: relative;
+	width: 100%;
+	height: 40vh;
+}
+.curve-edges {
+	border-radius: 100%;
+}
+span.title {
+	font-size: 2em;
+	font-weight: lighter;
+}
+span.title.big {
+	font-size: 5em;
+}
+.no-shadow {
+	box-shadow: none;
+}
+
+/* Background Colours */
+.bk-teal {
+	background-color: #009688;
+}
+.bk-grey {
+	background-color: #eee;
+}
+.bk-blue-happy {
+	background-color: #61bde3;
+}
+
+/* Alignment */
 .align-vertical-horizontal-center {
-	/*margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);*/
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -51,41 +108,54 @@ body {
 	-ms-transform: translate(50%, -50%);
 	transform: translate(50%, -50%);
 }
+.align-bottom-right {
+	margin: 0px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+.align-top-right {
+	margin: 0px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+/* Buttons */
 button, input[type=button].material {
 	padding: 10px 10px 10px 10px;
 	margin: 5px 5px 5px 5px;
 	background-color: #e0e0e0;
 	border: none;
 }
-input[type=text].material, input[type=password].material {
-	padding: 10px 10px 10px 10px;
-	margin: 5px 5px 5px 5px;
-	font-size: 0.833em;
-}
-h1, h2, h3, h4, h5, h6 {
-	font-weight: lighter;
-}
-div.full-page-box {
-	width: 100%;
-	height: 100vh;
-}
-.bright-bg {
-	background-color: rgba(255, 255, 255, 0.7);
-}
-a.in-page-link {
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none;   /* Chrome/Safari/Opera */
-	-khtml-user-select: none;    /* Konqueror */
-	-moz-user-select: none;      /* Firefox */
-	-ms-user-select: none;       /* IE/Edge */
-	user-select: none;           /* non-prefixed version, currently not supported by any browser */
-	
-	cursor: pointer;
-}
-.text-center {
-	text-align: center;
-}
-
+	/* Button Ripple */
+	button.ripple, input[type=button].material.ripple {
+		position: relative;
+		-webkit-transition-duration: 0.4s;
+		transition-duration: 0.4s;
+		text-decoration: none;
+		overflow: hidden;
+		cursor: pointer;
+	}
+	button.ripple:after, input[type=button].material.ripple:after {
+		content: "";
+		background: #fff;
+		display: block;
+		position: absolute;
+		padding-top: 300%;
+		padding-left: 350%;
+		margin-left: -20px!important;
+		margin-top: -120%;
+		opacity: 0;
+		transition: all 0.8s;
+	}
+	button.ripple:active:after, input[type=button].material.ripple:active:after {
+		padding: 0;
+		margin: 0;
+		opacity: 1;
+		transition: 0s;
+		border-radius: 100%;
+	}
 /* Scroll Bar */
 	body {
 		overflow-y: auto;
@@ -149,9 +219,6 @@ a.in-page-link {
 		to {
 			transform: translate(0%, 0%);
 		}
-	}
-	body::-webkit-scrollbar {
-		display: none;
 	}
 /* Cards */
 div.card {
@@ -299,10 +366,6 @@ div.nav {
 	top: 0px;
 	left: 0px;
 	z-index: 10;
-	
-	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 	/* Top */
 	div.nav-top {
@@ -959,7 +1022,7 @@ div.loading {
 	div.loading-folding-squares {
 		width: 100px;
 		height: 100px;
-		//transform: rotate(45deg);
+		/*transform: rotate(45deg);*/
 	}
 	div.loading-folding-squares div.p {
 		background-color: lightblue;
