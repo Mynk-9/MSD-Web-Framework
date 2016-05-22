@@ -1,2 +1,2 @@
-# MSD-Web-Framework
-A light web framework with wide browser support.
+# MSD Web Framework
+## A light web framework with wide browser support.
