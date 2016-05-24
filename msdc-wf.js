@@ -99,14 +99,14 @@ window.onload = function() {
 			var tn = new Array(document.querySelectorAll('.nav-top').length);
 			tn = document.querySelectorAll('.nav-top')[0];
 			if (ln.className.indexOf('nav-left-anim-go-left') != -1) {
-				__(ln).toggleClass('nav-left-anim-go-left', 'nav-left-anim-go-right');
-				__(tn).toggleClass('nav-left-anim-nav-top-go-left', 'nav-left-anim-nav-top-go-right');
+				___(ln).toggleClass('nav-left-anim-go-left', 'nav-left-anim-go-right');
+				___(tn).toggleClass('nav-left-anim-nav-top-go-left', 'nav-left-anim-nav-top-go-right');
 			} else if (ln.className.indexOf('nav-left-anim-go-right') != -1) {
-				__(ln).toggleClass('nav-left-anim-go-right', 'nav-left-anim-go-left');
-				__(tn).toggleClass('nav-left-anim-nav-top-go-right', 'nav-left-anim-nav-top-go-left');
+				___(ln).toggleClass('nav-left-anim-go-right', 'nav-left-anim-go-left');
+				___(tn).toggleClass('nav-left-anim-nav-top-go-right', 'nav-left-anim-nav-top-go-left');
 			} else {
-				__(ln).addClass('nav-left-anim-go-right');
-				__(tn).addClass('nav-left-anim-nav-top-go-right');
+				___(ln).addClass('nav-left-anim-go-right');
+				___(tn).addClass('nav-left-anim-nav-top-go-right');
 			}
 		}
 	}
@@ -140,10 +140,10 @@ window.onload = function() {
 			}
 		}
 		for (i = 0; i < pics.length; i++) {
-			__(pics[i]).toggleClass(' picture-last-active', '');
-			__(pics[i]).toggleClass(' picture-active', ' picture-last-active');
+			___(pics[i]).toggleClass(' picture-last-active', '');
+			___(pics[i]).toggleClass(' picture-active', ' picture-last-active');
 		}
-		__(pics[z]).addClass('picture-active');
+		___(pics[z]).addClass('picture-active');
 	}
 	function ssgoright(ss) {
 		var pics = ss.querySelectorAll('.picture');
@@ -158,10 +158,10 @@ window.onload = function() {
 			}
 		}
 		for (i = 0; i < pics.length; i++) {
-			__(pics[i]).toggleClass(' picture-last-active', '');
-			__(pics[i]).toggleClass(' picture-active', ' picture-last-active');
+			___(pics[i]).toggleClass(' picture-last-active', '');
+			___(pics[i]).toggleClass(' picture-active', ' picture-last-active');
 		}
-		__(pics[z]).addClass('picture-active');
+		___(pics[z]).addClass('picture-active');
 	}
 /* Tabination Maintainance */
 	function adjestTBS() {
@@ -173,12 +173,12 @@ window.onload = function() {
 			for (ii = 0; ii < tabs.length; ii++) {
 				tabs[ii].addEventListener('click', function() {
 					for (q = 0; q < tabs.length; q++) {
-						__(tabs[q]).toggleClass(' active', '');
-						__(divs[q]).toggleClass(' active', '');
+						___(tabs[q]).toggleClass(' active', '');
+						___(divs[q]).toggleClass(' active', '');
 					}
 					this.className += ' active';
 					var id = this.getAttribute('tabtarget');
-					__(document.getElementById(id)).addClass('active');
+					___(document.getElementById(id)).addClass('active');
 				});
 			}
 		}
@@ -189,11 +189,11 @@ window.onload = function() {
 		for (i = 0; i < dbs.length; i++) {
 			var db = dbs[i];
 			dbs[i].querySelectorAll('.footer')[0].querySelectorAll('.close')[0].addEventListener('click', function() {
-				__(db.querySelectorAll('.content')[0]).toggleClass(' active', '');
+				___(db.querySelectorAll('.content')[0]).toggleClass(' active', '');
 				document.body.style.overflow = 'auto';
 			});
 			dbs[i].querySelectorAll('.toggle')[0].addEventListener('click', function() {
-				__(db.querySelectorAll('.content')[0]).addClass('active');
+				___(db.querySelectorAll('.content')[0]).addClass('active');
 				document.body.style.overflow = 'hidden';
 			});
 		}
@@ -264,12 +264,12 @@ window.onload = function() {
 				for (ii = 0; ii < rws.length; ii++) {
 					rws[ii].addEventListener('click', function() {
 						if (this.className.indexOf('clicked') != -1) {
-							__(this).toggleClass('clicked', '');
+							___(this).toggleClass('clicked', '');
 						} else {
 							for (iii = 0; iii < this.parentNode.children.length; iii++) {
-								__(this.parentNode.children[iii]).toggleClass('clicked', '');
+								___(this.parentNode.children[iii]).toggleClass('clicked', '');
 							}
-							__(this).addClass('clicked');
+							___(this).addClass('clicked');
 						}
 					});
 				}
