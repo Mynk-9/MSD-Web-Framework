@@ -5,7 +5,7 @@
 		
 		<link rel="stylesheet" href="msdc-wf.css">
 		<link rel="stylesheet" href="msdc-wf-m.css">
-		<script src="http://mynk-9.github.io/Javascript-Web-Framework/JSFW.js"></script>
+		<script src="JS FW/jsfw.js"></script>
 		<script src="msdc-wf.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
@@ -25,20 +25,42 @@
 					
 				But take precaution while naming other variables as onload_functions is GLOBAL.
 			*/
+			onload_functions.push(function() {
+				forceAdjestForMobile();
+			});
 		</script>
+		
+		<style>
+			body {
+				overflow-x: hidden;
+			}
+			div.masked-page div.slide-full {
+				width: 100%;
+				height: auto;
+				min-height: 100%;
+			}
+			div.nav.nav-left > div.section {
+				background-image: url('sample-wallpaper-2.svg');
+				background-attachment: fixed;
+			}
+		</style>
 	</head>
 	
 	<body>
-		<div class="scroll">
+		<!--<div class="scroll">
 			<div class="top no-select"></div>
 			<div class="scr no-select"></div>
 			<div class="bottom no-select"></div>
-		</div>
+		</div>-->
+		
+		
 		<div class="loading-page"><div class="loading loading-flappy-square"><div></div></div></div>
-		<div class="nav nav-top">
-			<div class="left">
+		
+		
+		<div class="nav nav-top" style="background-image: url('sample-wallpaper.svg');">
+			<div class=left>
 				<p>
-					<button onclick="toggleLeftNav();" style="left: 0px;">
+					<button onclick="toggleLeftNav();" style="left: 0px;" class="curved-border-box bk-transparent">
 						<svg height="25" width="25">
 							<polyline points="0,4 25,4" style="fill:white;stroke:black;stroke-width:4" />
 							<polyline points="0,12.5 25,12.5" style="fill:white;stroke:black;stroke-width:4" />
@@ -47,369 +69,444 @@
 					</button>
 				</p>
 			</div>
-			<div class="center">
+			<div class=center>
 				<p>
-					<span class="title no-select">MSD Web Framework</span>
+					<span class="title no-select">MSD WEB FRAMEWORK</title>
 				</p>
 			</div>
-			<div class="right">
+			<div class=right>
 				<p>
-					
-				</p>
-			</div>
-		</div>
-		<div class="nav nav-left shadow-box">
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#home" timetaken="2">Home</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#tables" timetaken="2">Table Styling</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#cards" timetaken="2">Cards</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#HTMLdb" timetaken="2">HTML Dialogue Boxes</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#SShow" timetaken="2">Slide Show</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#LAnimations" timetaken="2">Loading Animations</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#tbn" timetaken="2">Tabination</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#pgrsbrs" timetaken="2">Progress Bars</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					<a role="inPageLink" toElement="#mscrolling" timetaken="2">Masked Scrolling</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					Visit the <a href="https://github.com/Mynk-9/MSD-Web-Framework">GitHub Page</a>
-				</p>
-			</div>
-			<div class="section">
-				<p>
-					Visit the <a href="http://mynk-9.github.io/MSD-Corp./">MSD Corp. page</a>
+					<!--<button class="curved-border-box bk-transparent">&nbsp&nbspf&nbsp&nbsp</button>-->
+					<button class="curved-border-box bk-transparent" onclick="window.location.href = 'https://github.com/Mynk-9/MSD-Web-Framework';">Github</button>
 				</p>
 			</div>
 		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="home">
-			<div class="slide">
-				<h1 align=center>So, welcome to MSD Web Framework.</h1>
-				<h3>Please keep scrolling down and experimenting with things. Or, use navigation from left toggling pane.</h3>
+		
+		<div class="nav nav-left" style="">
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s1" timetaken="1">Tables</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s2" timetaken="1">Cards</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s3" timetaken="1">Dialog Box</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s4" timetaken="1">Slideshow</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s5" timetaken="1">Loading Icons</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s6" timetaken="1">Tabination</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s7" timetaken="1">Progress Bars</a>
+				</p>
+			</div>
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#s8" timetaken="1">Masked Scrolling</a>
+				</p>
 			</div>
 		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-2.svg" id="tables">
-			<div class="slide">
-				<h1>Ever worried to make tables in your website look *Modern*?</h1>
-				<h1 class="text-center">There is a solution down there...</h1>
+		
+		
+		<div class="document-body" data-toggle-with-nav="true">
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<span class="title big align-vertical-horizontal-center no-select" style="color: #fff;">
+					<b>A Framework to make your website shine!</b>
+				</span>
 			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-2.svg">
-			<div class="slide-full">
-			<table class="table highlight-alternate" style="width: 50%;">
-				<tr>
-					<td>Highlight-Alternate</td>
-					<td>Table</td>
-				</tr>
-				<tr>
-					<td>Alternate</td>
-					<td>Rows</td>
-				</tr>
-				<tr>
-					<td>are</td>
-					<td>Highlighted</td>
-				</tr>
-				<tr>
-				<td>Like</td>
-					<td>This</td>
-				</tr>
-			</table>
-			<table class="table interactive" style="width: 50%;">
-				<tr>
-					<td>Interactive</td>
-					<td>Table</td>
-				</tr>
-				<tr>
-					<td>Has smooth</td>
-					<td>Animation</td>
-				</tr>
-				<tr>
-					<td>for</td>
-					<td>highlighting rows</td>
-				</tr>
-			</table>
-			<table class="table highlight-alternate interactive" style="width: 50%;">
-				<tr>
-					<td>Both</td>
-					<td>Of</td>
-				</tr>
-				<tr>
-					<td>Them</td>
-					<td>Together -</td>
-				</tr>
-				<tr>
-					<td>Highlight-Alternate, and,</td>
-					<td>Interactive</td>
-				</tr>
-			</table>
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s1" timetaken="1">Tables</a>
+					</span>
+				</div>
 			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-3.svg" id="cards">
-			<div class="slide">
-				<h1>Ever heard of or tried to make or use 'Cards'?</h1>
-				<h1 class="text-center">Well, you've got a lot of choices here !!</h1>
-			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-3.svg">
-			<div class="slide-full">
-				<h1 class="text-center">Normal Cards</h1>
-				<div class="page-row">
-					<div class="card">
-						<div class="header">
-							A card: Header
-						</div>
-						<div class="matter">
-							A card: Matter
-						</div>
-						<div class="footer">
-							A card: Footer
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="s1">
+				<div class="slide-full" style="min-height: 100%;">
+					<span class="title">Tables</span>
+					<div class="page-row">
+						<table class="table highlight-alternate inrow" style="width: 250px; margin: 10px;">
+							<tr>
+								<td>Lorem ipsum</td>
+								<td>dolor sit amet,</td>
+							</tr>
+							<tr>
+								<td>consectetur adipiscing elit</td>
+								<td>Curabitur sit amet</td>
+							</tr>
+							<tr>
+								<td>ullamcorper lectus.</td>
+								<td>Nunc congue quam</td>
+							</tr>
+							<tr>
+								<td>at diam porttitor,</td>
+								<td>vitae laoreet nulla aliquet</td>
+							</tr>
+						</table>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em;">
+							A table with alternate rows highlighted. Just use the class <code>.table.highlight-alternate</code>
 						</div>
 					</div>
-					<div class="card" style="width: 500px;">
-						<div class="header" style="background-color: #00BCD4;">
-							<p>
-								Login Form
-							</p>
+					<div class="page-row">
+						<table class="table interactive inrow" style="width: 250px; margin: 10px;">
+							<tr>
+								<td>Lorem ipsum</td>
+								<td>dolor sit amet,</td>
+							</tr>
+							<tr>
+								<td>consectetur adipiscing elit</td>
+								<td>Curabitur sit amet</td>
+							</tr>
+							<tr>
+								<td>ullamcorper lectus.</td>
+								<td>Nunc congue quam</td>
+							</tr>
+							<tr>
+								<td>at diam porttitor,</td>
+								<td>vitae laoreet nulla aliquet</td>
+							</tr>
+						</table>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em;">
+							A table with rows highlighted when hoverd with smooth animation. Just use the class <code>.table.interactive</code>
 						</div>
-						<div class="matter">
-							Username: <input type="text" value="abc@xyz.com" class="material" style="width: 70%;"></input><br />
-							Password: <input type="password" value="Password" class="material" style="width: 70%;"></input><br />	
-						</div>
-						<div class="footer">
-							<!--<p>-->
-							<input type="button" class="material" value="Login" style="background-color: #009688;"></input>
-							<!--</p>-->
+					</div>
+					<div class="page-row">
+						<table class="table interactive highlight-alternate inrow" style="width: 250px; margin: 10px;">
+							<tr>
+								<td>Lorem ipsum</td>
+								<td>dolor sit amet,</td>
+							</tr>
+							<tr>
+								<td>consectetur adipiscing elit</td>
+								<td>Curabitur sit amet</td>
+							</tr>
+							<tr>
+								<td>ullamcorper lectus.</td>
+								<td>Nunc congue quam</td>
+							</tr>
+							<tr>
+								<td>at diam porttitor,</td>
+								<td>vitae laoreet nulla aliquet</td>
+							</tr>
+						</table>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em;">
+							A table with rows highlighted when hoverd with smooth animation, plus, alternate rows already highlighted. Yes, it's possible to mix them up! Just use the class <code>.table.interactive.highlight-alternate</code>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-3.svg">
-			<div class="slide-full">
-				<h1 class="text-center">Number Cards</h1>
-				<div class="page-row">
-					<div class="card card-number">
-						<div class="number" style="background-color: #61bde3;">
-							<p>16</p>
-						</div>
-						<div class="matter" style="background-color: #eee;">
-							of December.
-						</div>
-					</div>
-					<div class="card card-number">
-						<div class="number" style="background-image: url('sample-image.jpg'); background-size: cover;"></div>
-						<div class="matter" style="background-color: #eee;">Employees required!</div>
-					</div>
+			
+			
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-2.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s2" timetaken="1">Cards - a new design philosophy</a>
+					</span>
 				</div>
 			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-3.svg">
-			<div class="slide-full">
-				<h1 class="text-center">Picture Cards</h1>
-				<div class="page-row">
-					<div class="card card-picture">
-						<div class="picture" style="background-image: url('sample-wallpaper.jpg');"></div>
-						<div class="caption">
-							<p>Picture Card. Caption.</p>
-						</div>
-					</div>
-					<div class="card card-picture">
-						<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');"></div>
-						<div class="caption">
-							<p>Picture Card. Caption.</p>
-						</div>
-					</div>
-					<div class="card card-picture">
-						<div class="picture" style="background-image: url('sample-wallpaper-3.jpg');"></div>
-						<div class="caption">
-							<p>Picture Card. Caption.</p>
-						</div>
-					</div>
-					<div class="card card-picture">
-						<div class="picture" style="background-image: url('sample-wallpaper-4.jpg');"></div>
-						<div class="caption">
-							<p>Picture Card. Caption.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-4.svg" id="HTMLdb">
-			<div class="slide">
-				<h1 class="text-center">Say hi to Dialogue Boxes. A new Thing in Webpage!!</h1>
-				Exapmle -
-				<div class="d-box">
-					<span class="toggle">Create a new ID</span>
-					<div class="content">
-						<div class="box">
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="s2">
+				<div class="slide-full">
+					<span class="title">Cards - Normal Card</span>
+					<div class="page-row">
+						<div class="card">
 							<div class="header">
-								<p>New ID</p>
+								A card: Header
 							</div>
 							<div class="matter">
-								<p>
-									Name: &nbsp <input type=text class="material" value="Your Name" style="width: 70%;"></input><br />
-									Surname: &nbsp <input type=text class="material" value="Your Surame" style="width: 70%;"></input><br />
-									Age: &nbsp <input type=text class="material" value="Your Age" style="width: 70%;"></input>
-								</p>
+								A card: Matter
 							</div>
 							<div class="footer">
-								<button class="close">Ok</button>
+								A card: Footer
+							</div>
+						</div>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em;">
+							A normal card has a header, a footer and a body, and it is open to any of your modifications. Just use <code>div.card</code> with heder as <code>div.header</code> and similarly for the body and footer.<br>See it's sample implementation below.
+						</div>
+					</div>
+					<div class="page-row">
+						<div class="card" style="width: 500px;">
+							<div class="header" style="background-color: #00BCD4;">
+								<p>
+									Login Form
+								</p>
+							</div>
+							<div class="matter">
+								Username: <input type="text" value="abc@xyz.com" class="material" style="width: 70%;"></input><br />
+								Password: <input type="password" value="Password" class="material" style="width: 70%;"></input><br />	
+							</div>
+							<div class="footer">
+								<!--<p>-->
+								<input type="button" class="material" value="Login" style="background-color: #009688;"></input>
+								<!--</p>-->
+							</div>
+						</div>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em;">
+							It is an implementation of a normal card with edits to fit for our use.
+						</div>
+					</div>
+					<span class="title">Cards - Number Card</span>
+					<div class="page-row">
+						<div class="card card-number">
+							<div class="number" style="background-color: #61bde3;">
+								<p>16</p>
+							</div>
+							<div class="matter" style="background-color: #eee;">
+								December.
+							</div>
+						</div>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em; margin-top: 20px;">
+							A number card can be used to emphasize some number, be it some stats or your birthday(can also be used like that!), it gives a good representation of that number. This is a sample of a date. Just use <code>div.card.card-number</code> with <code>div.number</code> and <code>div.matter</code> for respective sections.
+						</div>
+					</div>
+					<div class="page-row">
+						<div class="card card-number">
+							<div class="number" style="background-image: url('sample-image.jpg'); background-size: cover;"></div>
+							<div class="matter" style="background-color: #eee;">Employees required!</div>
+						</div>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em;">
+							It is an implementation of a number card to show that it can be used for varoius pusposes.
+						</div>
+					</div>
+					<span class="title">Cards - Picture Card</span>
+					<div class="page-row">
+						<div class="card card-picture">
+							<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');"></div>
+							<div class="caption">
+								<p>Captions ...</p>
+							</div>
+						</div>
+						<div style="width: 45%; margin: 10px; font-size: 1.2em; margin-top: 20px;">
+							A picture card can be used to display images or pictures with captions toggling when mouse hovered. Just use <code>div.card.card-picture</code> with <code>div.picture</code> (don't forget to include a background image!) and <code>div.caption</code> (use &ltp&gt element to wrap the caption) in it.<br>Try to hover or tap the image.
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-3.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s3" timetaken="1">Dialog boxes</a>
+					</span>
+				</div>
+			</div>
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="s3">
+				<div class="slide-full">
+					<span class="title">Dialog Box</span>
+					<p>
+						Dialog boxes are very easy, convinient and 'famous' way to prompt or inform the user about something. This thing was absent on the web, but yes, it's now possibile to get it there. Just use <code>div.d-box</code> in which, a <code>span.toogle</code> for the name of the button, <code>div.content</code> which includes all other items. It includes <code>div.box</code> which inturn includes a <code>div.header</code>, <code>div.matter</code>, and <code>div.footer</code>. <code>div.footer</code> may include a special <code>button.close</code> to close the modal/dialog box. And, not to forget that every text in <code>div.header, div.matter, div.footer</code> shall be included in a <code>&lt;p&gt;</code> element.<br><br>Try to open this modal / dialog box.
+					</p>
+					<div class="d-box">
+						<span class="toggle">Open a dialog box.</span>
+						<div class="content">
+							<div class="box" style="">
+								<div class="header" style="">
+									<p>What's a dialog box?</p>
+								</div>
+								<div class="matter" style="">
+									<p>
+										The graphical control element dialog box (also called dialogue box or just dialog) is a small window that communicates information to the user and prompts them for a response.<br><br>Dialog boxes are classified as "modal" or "modeless", depending on whether they block interaction with the software that initiated the dialog. The type of dialog box displayed is dependent upon the desired user interaction. [Wikipedia]
+									</p>
+								</div>
+								<div class="footer" style="">
+									<button class="close" style="margin: 0px;">&times</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="masked-page" id="SShow">
-			<div class="slide-full" style="position: absolute;">
-				<div class="picture-slideshow">
-					<div class="picture" style="background-image: url('sample-wallpaper.jpg');">
-						<p>Beautiful Slideshow. Beautiful Waterfalls ...</p>
-					</div>
-					<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');">
-						<p>Himalayas !!</p>
-					</div>
-					<div class="picture picture-active" style="background-image: url('sample-wallpaper-3.jpg');">
-						<p>Bamboo Forests of Japan</p>
-					</div>
-					<div class="picture" style="background-image: url('sample-wallpaper-4.jpg');">
-						<p>Rare Double Rainbow :D</p>
-					</div>
-					<div class="picture" style="background-image: url('sample-wallpaper-5.jpg');">
-						<p>A rabbit</p>
-					</div>
-					
-					<div class="goleft"><p><</p></div><div class="goright"><p>></p></div>
+			
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-5.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s4" timetaken="1">Make your website beautiful with a <b>Slideshow</b>.</a>
+					</span>
 				</div>
 			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-5.svg" id="LAnimations">
-			<div class="slide">
-				<h1 class="text-center">Some Loading Animation for Webpage</h1>
-				<h3 align=center>Scroll Down !! </h3>
-			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-5.svg">
-			<div class="slide-full">
-				<h1 class="text-center">Some Loading Animation for Webpage</h1>
-				<h3 align=right>More are to come!!</h3>
-				<div class="page-row">
-					<div class="loading loading-square-circle"></div>
-					<div class="loading loading-flappy-square"><div></div></div>
-					<div class="loading loading-two-circles"><div></div><div></div></div>
-					<!--<div class="loading loading-folding-squares"><div class="p"></div><div class="p"></div><div class="p"></div><div class="p"></div></div>-->
-					<!--<div class="loading loading-circle"><div></div><div></div></div>-->
-				</div>
-			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-3.svg" id="tbn">
-			<div class="slide">
-				<h1 class="text-center">Tabination</h1>
-				Exapmle - Did you liked this framework?
-				<div class="tabination">
-					<div class="tabs">
-						<div class="item" tabtarget="info1">Love it!</div>
-						<div class="item" tabtarget="info2">Liked it</div>
-						<div class="item" tabtarget="info3">Okay....</div>
-						<div class="item" tabtarget="info4">Needs Improvement</div>
-						<div class="item" tabtarget="info5">Not Good</div>
-						<div class="item" tabtarget="info6">Poor</div>
-					</div>
-					<div class="information">
-						<div class="info" id="info1">
-							Thanks A Lot !!!
+			<div class="masked-page" maskedbkground="sample-image.jpg" id="s4">
+				<div class="slide-full">
+					<div class="picture-slideshow">
+						<div class="picture" style="background-image: url('sample-wallpaper.jpg');">
+							<p>Beautiful Slideshow. Beautiful Waterfalls ...</p>
 						</div>
-						<div class="info" id="info2">
-							Thanks A Lot !!! But, I'll improve!
+						<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');">
+							<p>Himalayas !!</p>
 						</div>
-						<div class="info" id="info3">
-							Please tell me why only 'okay'??? :(
+						<div class="picture picture-active" style="background-image: url('sample-wallpaper-3.jpg');">
+							<p>Bamboo Forests of Japan</p>
 						</div>
-						<div class="info" id="info4">
-							I'll do my best to improve.
+						<div class="picture" style="background-image: url('sample-wallpaper-4.jpg');">
+							<p>Rare Double Rainbow :D</p>
 						</div>
-						<div class="info" id="info5">
-							I'm sorry!
+						<div class="picture" style="background-image: url('sample-wallpaper-5.jpg');">
+							<p>A rabbit</p>
 						</div>
-						<div class="info" id="info6">
-							:(
-						</div>
+						
+						<div class="goleft"><p><</p></div><div class="goright"><p>></p></div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="pgrsbrs">
-			<div class="slide">
-				<h1 class="text-center">Progress Bars</h1>
-				<h3 align=center>Making progress bars are very easy now plus it has got flavours!</h3>
-			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper.svg">
-			<div class="slide-full">
-				<div style="width: 100%; text-align: center;">
-				<div class="page-row">
-					<div class="progress-bar" id=pb1 style="width: 70%;"><div class="progress" value="75%">Normal Progress</div></div>
-					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb1').firstChild, this.value);"></input>%
-				</div>
-				<br><br>
-				<div class="page-row">
-					<div class="progress-bar" id=pb2 style="width: 70%;"><div class="progress progress-striped" value="75%">Striped Progress</div></div>
-					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb2').firstChild, this.value);"></input>%
-				</div>
-				<br><br>
-				<div class="page-row">
-					<div class="progress-bar" id=pb3 style="width: 70%;"><div class="progress progress-animated" value="75%">Animatable Progress</div></div>
-					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb3').firstChild, this.value);"></input>%
-				</div>
-				<br><br>
-				<div class="page-row">
-					<div class="progress-bar" id=pb4 style="width: 70%;"><div class="progress progress-striped-animated" value="75%">Striped Animated Progress</div></div>
-					<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb4').firstChild, this.value);"></input>%
-				</div>
-				<br><br>
+			
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-4.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s5" timetaken="1">Loading icons.</a>
+					</span>
 				</div>
 			</div>
-		</div>
-		<div class="masked-page" maskedbkground="sample-wallpaper-2.svg" id="mscrolling">
-			<div class="slide">
-				<h1 class="text-center">Did I left something?</h1>
-				<br /><br />
-				<h2 class="text-center">Oh Ya!</h2>
-				<br /><br />
-				<h1 class="text-center"><i>Masked Scrolling</i> effect! . It's also there in Desktop version :D</h1>
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s5>
+				<div class="slide-full">
+					<span class="title">Loading Icons</span>
+					<p>
+						Loading Icons can be used to show up when the webpage is loading, it gives user an impression of better and stylish web build plus a reliable website. It also gives info. the webpage is loading and should not be disturbed now for the best experience.<br><br>
+						Codes for loading animation is pretty complicated but highly shortened.<br><br>
+						<div class="page-row">
+							<div class="loading loading-square-circle"></div>
+							<p class="inrow">
+								Just use <code>div.loading.loading-square-circle</code>
+							</p>
+						</div>
+						<div class="page-row">
+							<div class="loading loading-flappy-square"><div></div></div>
+							<p class="inrow">
+								Just use <code>div.loading.loading-flappy-square</code> with a <code>div</code> in it.
+							</p>
+						</div>
+						<div class="page-row">
+							<div class="loading loading-two-circles"><div></div><div></div></div>
+							<p class="inrow">
+								Just use <code>div.loading.loading-two-circles</code> with two non-nested <code>div</code> in it.
+							</p>
+						</div>
+						Finally, to use them as a loading animation, just use <code>div.loading-page</code> and nest the animation in it. Rest all is handled automatically.
+					</p>
+				</div>
+			</div>
+			
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-5.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s6" timetaken="1">Tabination.</a>
+					</span>
+				</div>
+			</div>
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s6>
+				<div class="slide-full">
+					<span class="title">Tabination</span>
+					<p>
+						Tabination or simply tab is a very important tool for navigation. I can be made with ease with this framework.<br><br>
+						Take an example -> Did you liked this framework? Explore the different tabs and the smooth animation.
+						<div class="tabination">
+							<div class="tabs">
+								<div class="item" tabtarget="info1">Love it!</div>
+								<div class="item" tabtarget="info2">Liked it</div>
+								<div class="item" tabtarget="info3">Okay....</div>
+								<div class="item" tabtarget="info4">Needs Improvement</div>
+								<div class="item" tabtarget="info5">Not Good</div>
+								<div class="item" tabtarget="info6">Poor</div>
+							</div>
+							<div class="information">
+								<div class="info" id="info1">
+									Thanks A Lot !!!
+								</div>
+								<div class="info" id="info2">
+									Thanks A Lot !!! But, I'll improve!
+								</div>
+								<div class="info" id="info3">
+									Please tell me why only 'okay'??? :(
+								</div>
+								<div class="info" id="info4">
+									I'll do my best to improve.
+								</div>
+								<div class="info" id="info5">
+									I'm sorry!
+								</div>
+								<div class="info" id="info6">
+									:(
+								</div>
+							</div>
+						</div>
+					</p>
+					<br><br><br>
+					<p>
+						Just use <code>div.tabination</code> with two childs - <code>div.tabs</code> and <code>div.information</code>. <code>div.tabs</code> contain various <code>div.item</code> with attribute <code>tabtarget</code> and a value corresponding to the id of the <code>div.info</code> present in <code>div.information</code>.
+					</p>
+				</div>
+			</div>
+			
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-3.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s7" timetaken="1">Progress Bars</a>
+					</span>
+				</div>
+			</div>
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s7>
+				<div class="slide-full">
+					<span class="title">Progress Bars</span>
+					<div style="width: 100%; text-align: center;">
+						<div class="page-row">
+							<div class="progress-bar" id=pb1 style="width: 70%;"><div class="progress" value="75%">Normal Progress</div></div>
+							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb1').firstChild, this.value);"></input>%
+						</div>
+						<br><br>
+						<div class="page-row">
+							<div class="progress-bar" id=pb2 style="width: 70%;"><div class="progress progress-striped" value="75%">Striped Progress</div></div>
+							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb2').firstChild, this.value);"></input>%
+						</div>
+						<br><br>
+						<div class="page-row">
+							<div class="progress-bar" id=pb3 style="width: 70%;"><div class="progress progress-animated" value="75%">Animatable Progress</div></div>
+							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb3').firstChild, this.value);"></input>%
+						</div>
+						<br><br>
+						<div class="page-row">
+							<div class="progress-bar" id=pb4 style="width: 70%;"><div class="progress progress-striped-animated" value="75%">Striped Animated Progress</div></div>
+							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb4').firstChild, this.value);"></input>%
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-2.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a role="inPageLink" toElement="#s8" timetaken="1">Masked Scrolling</a>
+					</span>
+				</div>
+			</div>
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s8>
+				<div class="slide-full">
+					<span class="title">Masked Scrolling</span>
+					<p>
+						This <i>beautiful scrolling</i> effect is known as masked scroll, keeping the background image/pattern fixed with respect to the viewport.
+					</p>
+					<p>
+						Making it is very easy. Just use <code>div.masked-page</code> with an attribute <code>maskedbkground</code> of your desired value (the link of image, directly). Then there are two options, have a full page slide or a centerd slide, they can be made by using <code>div.slide-full</code> and <code>div.slide</code> respectively within the <code>div.masked-page</code>.
+					</p>
+					<br><br><br>
+					<p>
+						One can get more detailed info. about how-to of this framework at the Github page.
+					</p>
+				</div>
 			</div>
 		</div>
 	</body>
