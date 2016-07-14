@@ -21,7 +21,7 @@ window.onload = function() {
 			document.head.appendChild(imported[i]);
 		}
 		
-		executeOnload();
+		/*executeOnload();*/
 	};
 	this.getListOfLibraries = function() {
 		return library_files;
@@ -65,6 +65,7 @@ window.onload = function() {
 		adjestScrollBar();	/* Custom Scroll */
 	}
 	
+	executeOnload();		/* Execute onload functions */
 	/* at last remove loading animation */
 	adjestLA();				/* Loading Animation */
 };
@@ -101,12 +102,21 @@ window.onload = function() {
 			if (ln.className.indexOf('nav-left-anim-go-left') != -1) {
 				___(ln).toggleClass('nav-left-anim-go-left', 'nav-left-anim-go-right');
 				___(tn).toggleClass('nav-left-anim-nav-top-go-left', 'nav-left-anim-nav-top-go-right');
+				if (document.querySelectorAll('div.document-body')[0].getAttribute('data-toggle-with-nav') === 'true') {
+					___('div.document-body').toggleClass('toggleLeft', 'toggleRight');
+				}
 			} else if (ln.className.indexOf('nav-left-anim-go-right') != -1) {
 				___(ln).toggleClass('nav-left-anim-go-right', 'nav-left-anim-go-left');
 				___(tn).toggleClass('nav-left-anim-nav-top-go-right', 'nav-left-anim-nav-top-go-left');
+				if (document.querySelectorAll('div.document-body')[0].getAttribute('data-toggle-with-nav') === 'true') {
+					___('div.document-body').toggleClass('toggleRight', 'toggleLeft');
+				}
 			} else {
 				___(ln).addClass('nav-left-anim-go-right');
 				___(tn).addClass('nav-left-anim-nav-top-go-right');
+				if (document.querySelectorAll('div.document-body')[0].getAttribute('data-toggle-with-nav') === 'true') {
+					___('div.document-body').addClass('toggleRight');
+				}
 			}
 		}
 	}
@@ -309,6 +319,16 @@ window.onload = function() {
 	}
 /* Mobile Device Maintainance */
 	function adjestformobile() {
+		if (isMobile() === true) {
+			var mskd = new Array(document.querySelectorAll('.masked-page').length);
+			mskd = document.querySelectorAll('.masked-page');
+			for (i = 0; i < mskd.length; i++) {
+				var fp = mskd[i].querySelectorAll('.slide-full')[0];
+				if (typeof fp != 'undefined') {mskd[i].style.height = fp.offsetHeight + 'px'; /*console.log(fp.offsetHeight);*/}
+			}
+		}
+	}
+	function forceAdjestForMobile() {
 		var mskd = new Array(document.querySelectorAll('.masked-page').length);
 		mskd = document.querySelectorAll('.masked-page');
 		for (i = 0; i < mskd.length; i++) {

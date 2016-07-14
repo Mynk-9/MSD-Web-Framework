@@ -28,6 +28,10 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 		font-size: 1.5em;
 		font-weight: lighter;
 	}
+	span.title.big {
+		font-size: 3em;
+		font-weight: lighter;
+	}
 	/* Left Nav */
 	div.nav-left {
 		position: fixed;
@@ -60,6 +64,23 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 		from {left: 0px;}
 		to {left: 0px;}
 	}
+	/* Document Body */
+	@keyframes document-body-anim-go-right {
+		from {
+			transform: none;
+		}
+		to {
+			transform: none;
+		}
+	}
+	@keyframes document-body-anim-go-left {
+		from {
+			transform: none;
+		}
+		to {
+			transform: none;
+		}
+	}
 	/* Cards */
 	div.card {
 		max-width: calc(100vw - 50px);
@@ -90,6 +111,7 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 	div.masked-page div.slide {
 		width: 70%;
 		height: 70%;
+		left: 15%; top: 15%;
 	}
 	div.masked-page div.slide-full {
 		width: 100%;
