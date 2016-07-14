@@ -93,8 +93,10 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 		padding: 5px;
 	}
 	div.d-box div.content div.box {
-		min-width: 100%;
-		min-height: 100%;
+		min-width: 100vw;
+		min-height: calc(100vh - 70px);
+		height: calc(100vh - 70px);
+		width: 100vw;
 	}
 	/* Picture Slideshow */
 	div.picture-slideshow div.goright, div.picture-slideshow div.goleft {
