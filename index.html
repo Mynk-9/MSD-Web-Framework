@@ -5,7 +5,7 @@
 		
 		<link rel="stylesheet" href="msdc-wf.css">
 		<link rel="stylesheet" href="msdc-wf-m.css">
-		<script src="http://mynk-9.github.io/Javascript-Web-Framework/JSFW.js"></script>
+		<script src="JS FW/jsfw.js"></script>
 		<script src="msdc-wf.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
@@ -40,13 +40,13 @@
 				min-height: 100%;
 			}
 			div.nav.nav-left > div.section {
-				background-image: url('sample-wallpaper-2.svg');
+				background-image: url('sample-wallpaper.svg');
 				background-attachment: fixed;
 			}
 		</style>
 	</head>
 	
-	<body>
+	<body style="background-image: url('sample-wallpaper.svg');">
 		<!--<div class="scroll">
 			<div class="top no-select"></div>
 			<div class="scr no-select"></div>
@@ -71,7 +71,7 @@
 			</div>
 			<div class=center>
 				<p>
-					<span class="title no-select">MSD WEB FRAMEWORK</title>
+					<span class="title no-select"><a role="inPageLink" toElement="#home" timetaken="1">MSD Web Framework</a></title>
 				</p>
 			</div>
 			<div class=right>
@@ -82,7 +82,12 @@
 			</div>
 		</div>
 		
-		<div class="nav nav-left" style="">
+		<div class="nav nav-left">
+			<div class="section">
+				<p>
+					<a role="inPageLink" toElement="#home" timetaken="1">Home</a>
+				</p>
+			</div>
 			<div class="section">
 				<p>
 					<a role="inPageLink" toElement="#s1" timetaken="1">Tables</a>
@@ -127,7 +132,7 @@
 		
 		
 		<div class="document-body" data-toggle-with-nav="true">
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="home">
 				<span class="title big align-vertical-horizontal-center no-select" style="color: #fff;">
 					<b>A Framework to make your website shine!</b>
 				</span>
