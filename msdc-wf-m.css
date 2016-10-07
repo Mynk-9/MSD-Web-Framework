@@ -1,4 +1,4 @@
-/* Copyright © 2016 Mayank Mathur 
+/*! Copyright © 2016 Mayank Mathur 
 see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
 */
 @media only screen and (max-width: 600px) {
@@ -48,38 +48,24 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 	div.nav-left > div.section:hover {
 		background-color: #aaa;
 	}
-	@keyframes nav-left-anim-goLeft {
-		from {transform: translate(0%, calc(0% + 70px));}
-		to {transform: translate(0%, -100%);}
+	div.nav-left.goLeft {
+		transform: translate(0%, -100%);
 	}
-	@keyframes nav-left-anim-goRight {
-		from {transform: translate(0%, -100%);}
-		to {transform: translate(0%, calc(0% + 70px));}
+	div.nav-left.goRight {
+		transform: translate(0%, calc(0% + 70px));
 	}
-	@keyframes nav-left-anim-nav-top-goLeft {
-		from {left: 0px;}
-		to {left: 0px;}
+	div.nav-top.goLeft {
+		left: 0px;
 	}
-	@keyframes nav-left-anim-nav-top-goRight {
-		from {left: 0px;}
-		to {left: 0px;}
+	div.nav-top.goRight {
+		left: 0px;
 	}
 	/* Document Body */
-	@keyframes document-body-anim-go-right {
-		from {
-			transform: none;
-		}
-		to {
-			transform: none;
-		}
+	div.document-body.toggleRight {
+		transform: none;
 	}
-	@keyframes document-body-anim-go-left {
-		from {
-			transform: none;
-		}
-		to {
-			transform: none;
-		}
+	div.document-body.toggleLeft {
+		transform: none;
 	}
 	/* Cards */
 	div.card {

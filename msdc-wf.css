@@ -1,4 +1,4 @@
-/* Copyright © 2016 Mayank Mathur 
+/*! Copyright © 2016 Mayank Mathur 
 see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
 */
 /* General Styling */
@@ -96,34 +96,14 @@ span.title.small {
 div.document-body {
 	margin: 0px;
 	padding: 0px;
+	
+	transition: transform 1s ease;
 }
 div.document-body.toggleRight {
-	animation: document-body-anim-go-right 1s ease 0s 1 normal;
-	animation-fill-mode: forwards;
+	transform: translate(25%, 0%);
 }
 div.document-body.toggleLeft {
-	animation: document-body-anim-go-left 1s ease 0s 1 normal;
-	animation-fill-mode: forwards;
-}
-@keyframes document-body-anim-go-right {
-	from {
-		transform: none;
-		/*overflow-x: auto;*/
-	}
-	to {
-		transform: translate(25%, 0%);
-		/*overflow-x: hidden;*/
-	}
-}
-@keyframes document-body-anim-go-left {
-	from {
-		transform: translate(25%, 0%);
-		/*overflow-x: hidden;*/
-	}
-	to {
-		transform: none;
-		/*overflow-x: auto;*/
-	}
+	transform: none;
 }
 
 /* Background Colours */
@@ -363,10 +343,10 @@ div.card {
 		background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,0));
 		background: -moz-linear-gradient(top, rgba(0,0,0,1), rgba(0,0,0,0));
 		background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+		transition: opacity 1s;
 	}
 	div.card-picture:hover div.caption {
-		animation: card-picture-anim-show-caption 0.5s ease 1 normal;
-		animation-fill-mode: forwards;
+		opacity: 1;
 	}
 	div.card-picture div.caption p {
 		
@@ -383,11 +363,6 @@ div.card {
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 	}
-		/* Animations */
-		@keyframes card-picture-anim-show-caption {
-			from {opacity: 0;}
-			to {opacity: 1;}
-		}
 
 /* Tables */
 table.table {
@@ -401,19 +376,16 @@ table.table {
 	table.highlight-alternate tr:nth-child(even) {
 		background-color: #e0e0e0;
 	}
+	table.interactive tr {
+		transition: background-color 1s ease, color 1s ease;
+	}
 	table.interactive tr:hover {
-		animation: table-ineractive-anim-hover-highlight 0.5s ease 1 normal;
-		animation-fill-mode: forwards;
+		background-color: grey;
 	}
 	table.interactive tr.clicked {
 		color: #fff;
 		background-color: #000;
 	}
-		/* Animations */
-		@keyframes table-ineractive-anim-hover-highlight {
-			from {}
-			to {background-color: grey;}
-		}
 
 /* Navigation Bar */
 div.nav {
@@ -428,26 +400,28 @@ div.nav {
 		height: 70px;
 		background-color: #eee;
 		left: 0px;
+		
+		transition: left 1s ease;
 	}
-	div.nav-top div.left {
+	div.nav-top > div.left {
 		position: absolute;
 		left: 0px;
 		height: 100%;
 		width: 25%;
 	}
-	div.nav-top div.center {
+	div.nav-top > div.center {
 		position: absolute;
 		left: 25%;
 		height: 100%;
 		width: 50%;
 	}
-	div.nav-top div.right {
+	div.nav-top > div.right {
 		position: absolute;
 		left: 75%;
 		height: 100%;
 		width: 25%;
 	}
-	div.nav-top div.left p, div.nav-top div.center p, div.nav-top div.right p {
+	div.nav-top > div.left > p, div.nav-top > div.center > p, div.nav-top > div.right > p {
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 		
@@ -471,8 +445,10 @@ div.nav {
 		transform: translate(-100%, 0%);
 		overflow-y: auto;
 		background-color: #fff;
+		
+		transition: transform 1s ease;
 	}
-	div.nav-left div.section {
+	div.nav-left > div.section {
 		width: 100%;
 		position: relative;
 		background-color: #eee;
@@ -480,7 +456,7 @@ div.nav {
 		min-height: 150px;
 		border-bottom: 1px solid #e0e0e0;
 	}
-	div.nav-left div.section p {
+	div.nav-left > div.section > p {
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 		
@@ -495,37 +471,17 @@ div.nav {
 		transform: translate(-50%, -50%);
 	}
 		/* Animations */
-		div.nav-left-anim-go-left {
-			animation: nav-left-anim-goLeft 1s ease 1 normal;
-			animation-fill-mode: forwards;
+		div.nav-left.goLeft {
+			transform: translate(-100%, 0%);
 		}
-		div.nav-left-anim-go-right {
-			animation: nav-left-anim-goRight 1s ease 1 normal;
-			animation-fill-mode: forwards;
+		div.nav-left.goRight {
+			transform: translate(0%, 0%);
 		}
-		.nav-left-anim-nav-top-go-left {
-			animation: nav-left-anim-nav-top-goLeft 1s ease 1 normal;
-			animation-fill-mode: forwards;
+		div.nav-top.goLeft {
+			left: 0px;
 		}
-		.nav-left-anim-nav-top-go-right {
-			animation: nav-left-anim-nav-top-goRight 1s ease 1 normal;
-			animation-fill-mode: forwards;
-		}
-		@keyframes nav-left-anim-goLeft {
-			from {transform: translate(0%, 0%);}
-			to {transform: translate(-100%, 0%);}
-		}
-		@keyframes nav-left-anim-goRight {
-			from {transform: translate(-100%, 0%);}
-			to {transform: translate(0%, 0%);}
-		}
-		@keyframes nav-left-anim-nav-top-goLeft {
-			from {left: calc(25%);}
-			to {left: 0px;}
-		}
-		@keyframes nav-left-anim-nav-top-goRight {
-			from {left: 0px;}
-			to {left: calc(25%);}
+		div.nav-top.goRight {
+			left: 25%;
 		}
 /* page-row */
 	div.page-row  {
@@ -574,7 +530,7 @@ div.nav {
 		height: 100%;
 		overflow: hidden;
 	}
-	div.picture-slideshow div.goleft {
+	div.picture-slideshow > div.goleft {
 		position: absolute;
 		left: 0px;
 		width: 10%;
@@ -586,17 +542,13 @@ div.nav {
 		background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
 		
 		opacity: 0;
+		
+		transition: opacity 1s ease;
 	}
-	div.picture-slideshow div.goleft:hover {
-		animation: picture-slideshow-anim-goleft-hover 1s ease 1 normal;
-		animation-fill-mode: forwards;
+	div.picture-slideshow > div.goleft:hover {
+		opacity: 1;
 	}
-			/* Animations */
-			@keyframes picture-slideshow-anim-goleft-hover {
-				from {opacity: 0;}
-				to {opacity: 1;}
-			}
-	div.picture-slideshow div.goright {
+	div.picture-slideshow > div.goright {
 		position: absolute;
 		left: 90%;
 		width: 10%;
@@ -608,17 +560,13 @@ div.nav {
 		background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
 		
 		opacity: 0;
+		
+		transition: opacity 1s ease;
 	}
-	div.picture-slideshow div.goright:hover {
-		animation: picture-slideshow-anim-goright-hover 1s ease 1 normal;
-		animation-fill-mode: forwards;
+	div.picture-slideshow > div.goright:hover {
+		opacity: 1;
 	}
-		/* Animations */
-			@keyframes picture-slideshow-anim-goright-hover {
-				from {opacity: 0;}
-				to {opacity: 1;}
-			}
-	div.picture-slideshow div.goleft p, div.picture-slideshow div.goright p {
+	div.picture-slideshow > div.goleft > p, div.picture-slideshow > div.goright > p {
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 		
@@ -645,7 +593,7 @@ div.nav {
 		
 		cursor: pointer;
 	}
-	div.picture-slideshow div.picture {
+	div.picture-slideshow > div.picture {
 		position: absolute;
 		left: 0px;
 		width: 100%;
@@ -655,8 +603,10 @@ div.nav {
 		background-repeat: no-repeat;
 		z-index: 0;
 		opacity: 0;
+		
+		transition: -webkit-filter 1s ease, opacity 1s linear;
 	}
-	div.picture-slideshow div.picture p {
+	div.picture-slideshow > div.picture > p {
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 		
@@ -678,28 +628,38 @@ div.nav {
 		background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
 		
 		opacity: 0;
+		
+		transition: opacity 1s ease;
 	}
-	div.picture-slideshow div.picture:hover p {
-		animation: picture-slideshow-anim-picture-hover 1s ease 1 normal;
-		animation-fill-mode: forwards;
+	div.picture-slideshow > div.picture:hover > p {
+		opacity: 1;
 	}
-		/* Animations */
-		@keyframes picture-slideshow-anim-picture-hover {
-			from {opacity: 0;}
-			to {opacity: 1;}
-		}
-	div.picture-slideshow div.picture-active {
+	
+	div.picture-slideshow.effect-blur > div.picture {	
+		-webkit-filter: blur(10px);
+	}
+	div.picture-slideshow.effect-blur > div.picture.active {
 		z-index: 1;
-		/*opacity: 1;*/
-		animation: picture-slideshow-anim-next-pic 2s ease 1 normal;
-		animation-fill-mode: forwards;
+		opacity: 1;
+		-webkit-filter: blur(0px);
 	}
-		/* Animations */
-		@keyframes picture-slideshow-anim-next-pic {
-			from {opacity: 0;}
-			to {opacity: 1;}
-		}
-	div.picture-slideshow div.picture-last-active {
+	
+	div.picture-slideshow.effect-submerge > div.picture.active {
+		z-index: 1;
+		opacity: 1;
+	}
+	
+	div.picture-slideshow.effect-dilate {
+		perspective: 10px;
+	}
+	div.picture-slideshow.effect-dilate > div.picture {
+		transform: translateZ(-10px);
+		transition: transform 1s ease, z-index 1s ease, border-radius 1s ease, opacity 1s ease;
+	}
+	div.picture-slideshow.effect-dilate > div.picture.active {
+		z-index: 1;
+		transform: translateZ(0px);
+		border-radius: 0px;
 		opacity: 1;
 	}
 /* Tabination */
@@ -707,13 +667,13 @@ div.nav {
 		width: calc(100% - 40px);
 		margin: 20px;
 	}
-	div.tabination div.tabs {
+	div.tabination > div.tabs {
 		width: 100%;
 		position: relative;
 		top: 0px;
 		border-bottom: 1px solid #e0e0e0;
 	}
-	div.tabination div.tabs div.item {
+	div.tabination > div.tabs > div.item {
 		display: inline-block;
 		height: 100%;
 		text-align: center;
@@ -728,7 +688,7 @@ div.nav {
 		
 		cursor: pointer;
 	}
-	div.tabination div.tabs div.active {
+	div.tabination > div.tabs > div.item.active {
 		border-bottom: none;
 		border-top: 1px solid #e0e0e0;
 		border-left: 1px solid #e0e0e0;
@@ -741,7 +701,7 @@ div.nav {
 		top: 0px;
 		width: 100%;
 	}
-	div.information div.info {
+	div.information > div.info {
 		position: absolute;
 		height: 100%;
 		width: calc(100% - 20px);
@@ -751,16 +711,13 @@ div.nav {
 		
 		opacity: 0;
 		z-index: 0;
+		
+		transition: opacity .5s ease;
 	}
-	div.information div.active {
+	div.information > div.info.active {
 		z-index: 1;
-		animation: tabination-anim-switch-tab-div 1s ease 1 normal;
-		animation-fill-mode: forwards;
+		opacity: 1;
 	}
-		/* Animations */
-		@keyframes tabination-anim-switch-tab-div {
-			from {opacity: 0;}
-			to {opacity: 1;}
 		}
 /* Dialog Box */
 	div.d-box {
@@ -795,17 +752,13 @@ div.nav {
 		z-index: 20;
 		opacity: 0;
 		visibility: hidden;
+		
+		transition: opacity 1s ease;
 	}
 	div.d-box div.active {
+		opacity: 1;
 		visibility: visible;
-		animation: d-box-anim-show-up 1s ease 1 normal;
-		animation-fill-mode: forwards;
 	}
-		/* Animations */
-		@keyframes d-box-anim-show-up {
-			from {opacity: 0;}
-			to {opacity: 1;}
-		}
 	div.d-box div.content div.box {
 		min-width: 90%;
 		min-height: 90%;
