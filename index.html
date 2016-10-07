@@ -5,7 +5,7 @@
 		
 		<link rel="stylesheet" href="msdc-wf.css">
 		<link rel="stylesheet" href="msdc-wf-m.css">
-		<script src="http://mynk-9.github.io/Javascript-Web-Framework/JSFW.js"></script>
+		<script src="JS FW/jsfw.js"></script>
 		<script src="msdc-wf.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
@@ -28,6 +28,18 @@
 			onload_functions.push(function() {
 				forceAdjestForMobile();
 			});
+			
+			function slideshowRadioButtonHandle(obj) {
+				var ss = document.getElementById('pictureSlideshow');
+				console.log(obj);
+				if (obj.checked == true) {
+					var str = '';
+					if (ss.className.indexOf('effect-dilate') > 0) str = 'effect-dilate';
+					if (ss.className.indexOf('effect-blur') > 0) str = 'effect-blur';
+					if (ss.className.indexOf('effect-submerge') > 0) str = 'effect-submerge';
+					ss.className = ss.className.replace(str, obj.value);
+				}
+			}
 		</script>
 		
 		<style>
@@ -315,13 +327,13 @@
 			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="s3">
 				<div class="slide-full">
 					<span class="title">Dialog Box</span>
-					<p>
+					<p style="font-size: 1.2em;">
 						Dialog boxes are very easy, convinient and 'famous' way to prompt or inform the user about something. This thing was absent on the web, but yes, it's now possibile to get it there. Just use <code>div.d-box</code> in which, a <code>span.toogle</code> for the name of the button, <code>div.content</code> which includes all other items. It includes <code>div.box</code> which inturn includes a <code>div.header</code>, <code>div.matter</code>, and <code>div.footer</code>. <code>div.footer</code> may include a special <code>button.close</code> to close the modal/dialog box. And, not to forget that every text in <code>div.header, div.matter, div.footer</code> shall be included in a <code>&lt;p&gt;</code> element.<br><br>Try to open this modal / dialog box.
 					</p>
 					<div class="d-box">
 						<span class="toggle">Open a dialog box.</span>
 						<div class="content">
-							<div class="box" style="">
+							<div class="box" style="font-size: 1.2em;">
 								<div class="header" style="">
 									<p>What's a dialog box?</p>
 								</div>
@@ -331,7 +343,7 @@
 									</p>
 								</div>
 								<div class="footer" style="">
-									<button class="close" style="margin: 0px;">&times</button>
+									<button class="close" style="margin: 0px;">&times;</button>
 								</div>
 							</div>
 						</div>
@@ -346,26 +358,41 @@
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-image.jpg" id="s4">
+			<div class="masked-page" maskedbkground="" id="s4">
 				<div class="slide-full">
-					<div class="picture-slideshow">
-						<div class="picture" style="background-image: url('sample-wallpaper.jpg');">
-							<p>Beautiful Slideshow. Beautiful Waterfalls ...</p>
+					<div class="page-row">
+						<div class="picture-slideshow effect-submerge" id="pictureSlideshow" style="position: relative; height: calc(100vh - 70px);">
+							<div class="picture" style="background-image: url('sample-wallpaper.jpg');">
+								<p>Beautiful Slideshow. Beautiful Waterfalls ...</p>
+							</div>
+							<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');">
+								<p>Himalayas !!</p>
+							</div>
+							<div class="picture active" style="background-image: url('sample-wallpaper-3.jpg');">
+								<p>Bamboo Forests of Japan</p>
+							</div>
+							<div class="picture" style="background-image: url('sample-wallpaper-4.jpg');">
+								<p>Rare Double Rainbow :D</p>
+							</div>
+							<div class="picture" style="background-image: url('sample-wallpaper-5.jpg');">
+								<p>A rabbit</p>
+							</div>
+							<div class="goleft"><p><</p></div><div class="goright"><p>></p></div>
 						</div>
-						<div class="picture" style="background-image: url('sample-wallpaper-2.jpg');">
-							<p>Himalayas !!</p>
+						<div style="position: relative; font-size: 1.2em;">
+							<br>
+							<span>
+								<form>
+									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-submerge" checked />Submerge Effect
+									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-blur" />Blur Effect
+									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-dilate" />Dilate Effect
+								</form>
+							</span><br>
+							Making a picture (or maybe anything) slideshow has never been easier.<br>
+							Make a <code>div.picture-slideshow</code> with desired tansition effects using <code>.effect-submerge</code>, <code>.effect-blur</code> or <code>.effect-dilate</code> as per choice. Then, add <code>div.picture</code> for images with background image using CSS, for a simple caption just add a <code>p</code> inside the <code>div.picture</code>. Finally, for scrolling purposes, add two div's -- <code>div.goleft</code> and <code>div.goright</code> and finally nest a <code>p</code> inside them for desired icons.<br>
+							<br>
+							And, that's it. All else will be done backstage!
 						</div>
-						<div class="picture picture-active" style="background-image: url('sample-wallpaper-3.jpg');">
-							<p>Bamboo Forests of Japan</p>
-						</div>
-						<div class="picture" style="background-image: url('sample-wallpaper-4.jpg');">
-							<p>Rare Double Rainbow :D</p>
-						</div>
-						<div class="picture" style="background-image: url('sample-wallpaper-5.jpg');">
-							<p>A rabbit</p>
-						</div>
-						
-						<div class="goleft"><p><</p></div><div class="goright"><p>></p></div>
 					</div>
 				</div>
 			</div>

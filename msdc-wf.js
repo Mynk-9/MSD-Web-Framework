@@ -1,4 +1,4 @@
-/* Copyright © 2016 Mayank Mathur 
+/*! Copyright © 2016 Mayank Mathur 
 see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
 */
 var library_files = [];
@@ -99,21 +99,21 @@ window.onload = function() {
 			var ln = document.querySelectorAll('.nav-left')[0];
 			var tn = new Array(document.querySelectorAll('.nav-top').length);
 			tn = document.querySelectorAll('.nav-top')[0];
-			if (ln.className.indexOf('nav-left-anim-go-left') != -1) {
-				___(ln).toggleClass('nav-left-anim-go-left', 'nav-left-anim-go-right');
-				___(tn).toggleClass('nav-left-anim-nav-top-go-left', 'nav-left-anim-nav-top-go-right');
+			if (ln.className.indexOf('goLeft') != -1) {
+				___(ln).toggleClass('goLeft', 'goRight');
+				___(tn).toggleClass('goLeft', 'goRight');
 				if (document.querySelectorAll('div.document-body')[0].getAttribute('data-toggle-with-nav') === 'true') {
 					___('div.document-body').toggleClass('toggleLeft', 'toggleRight');
 				}
-			} else if (ln.className.indexOf('nav-left-anim-go-right') != -1) {
-				___(ln).toggleClass('nav-left-anim-go-right', 'nav-left-anim-go-left');
-				___(tn).toggleClass('nav-left-anim-nav-top-go-right', 'nav-left-anim-nav-top-go-left');
+			} else if (ln.className.indexOf('goRight') != -1) {
+				___(ln).toggleClass('goRight', 'goLeft');
+				___(tn).toggleClass('goRight', 'goLeft');
 				if (document.querySelectorAll('div.document-body')[0].getAttribute('data-toggle-with-nav') === 'true') {
 					___('div.document-body').toggleClass('toggleRight', 'toggleLeft');
 				}
 			} else {
-				___(ln).addClass('nav-left-anim-go-right');
-				___(tn).addClass('nav-left-anim-nav-top-go-right');
+				___(ln).addClass('goRight');
+				___(tn).addClass('goRight');
 				if (document.querySelectorAll('div.document-body')[0].getAttribute('data-toggle-with-nav') === 'true') {
 					___('div.document-body').addClass('toggleRight');
 				}
@@ -141,7 +141,7 @@ window.onload = function() {
 		var pics = ss.querySelectorAll('.picture');
 		var z = 0;
 		for (i = 0; i < pics.length; i++) {
-			if (pics[i].className.indexOf('picture-active') != -1) {
+			if (pics[i].className.indexOf('active') != -1) {
 				if (i == 0) {
 					z = pics.length - 1;
 				} else {
@@ -150,16 +150,15 @@ window.onload = function() {
 			}
 		}
 		for (i = 0; i < pics.length; i++) {
-			___(pics[i]).toggleClass(' picture-last-active', '');
-			___(pics[i]).toggleClass(' picture-active', ' picture-last-active');
+			___(pics[i]).toggleClass(' active', ' ');
 		}
-		___(pics[z]).addClass('picture-active');
+		___(pics[z]).addClass('active');
 	}
 	function ssgoright(ss) {
 		var pics = ss.querySelectorAll('.picture');
 		var z = 0;
 		for (i = 0; i < pics.length; i++) {
-			if (pics[i].className.indexOf('picture-active') != -1) {
+			if (pics[i].className.indexOf('active') != -1) {
 				if (i == (pics.length - 1)) {
 					z = 0
 				} else {
@@ -168,10 +167,9 @@ window.onload = function() {
 			}
 		}
 		for (i = 0; i < pics.length; i++) {
-			___(pics[i]).toggleClass(' picture-last-active', '');
-			___(pics[i]).toggleClass(' picture-active', ' picture-last-active');
+			___(pics[i]).toggleClass(' active', ' ');
 		}
-		___(pics[z]).addClass('picture-active');
+		___(pics[z]).addClass('active');
 	}
 /* Tabination Maintainance */
 	function adjestTBS() {
@@ -236,12 +234,15 @@ window.onload = function() {
 						function move() {
 							if (getWinYOset() == ele.offsetTop) {
 								clearInterval(q);
+								finalReturn();		// make sure there is no error
 								return;
 							} else if (w == true & getWinYOset() < ele.offsetTop) {
 								clearInterval(q);
+								finalReturn();		// make sure there is no error
 								return;
 							} else if (w == false & getWinYOset() > ele.offsetTop) {
 								clearInterval(q);
+								finalReturn();		// make sure there is no error
 								return;
 							} else {
 								n++;
@@ -256,6 +257,11 @@ window.onload = function() {
 								y = window.pageYOffset;
 							}
 							return y;
+						}
+						function finalReturn() {
+							var diff = getWinYOset() - ele.offsetTop;
+							/*console.log('final return -> ' + diff);*/
+							window.scrollBy(0, diff);
 						}
 					});
 				}
