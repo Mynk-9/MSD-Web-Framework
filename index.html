@@ -3,9 +3,9 @@
 	<head>
 		<title>MSD Web Framework</title>
 		
-		<link rel="stylesheet" href="msdc-wf.css">
-		<link rel="stylesheet" href="msdc-wf-m.css">
-		<script src="http://mynk-9.github.io/Javascript-Web-Framework/JSFW.js"></script>
+		<link rel="stylesheet" href="msdc-wf.css" />
+		<link rel="stylesheet" href="msdc-wf-m.css" />
+		<script src="JS FW/jsfw.js"></script>
 		<script src="msdc-wf.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
@@ -25,13 +25,15 @@
 					
 				But take precaution while naming other variables as onload_functions is GLOBAL.
 			*/
+			
+			library_files.push('msdc-wf-exp.css');
+			
 			onload_functions.push(function() {
 				forceAdjestForMobile();
 			});
 			
 			function slideshowRadioButtonHandle(obj) {
 				var ss = document.getElementById('pictureSlideshow');
-				console.log(obj);
 				if (obj.checked == true) {
 					var str = '';
 					if (ss.className.indexOf('effect-dilate') > 0) str = 'effect-dilate';
@@ -51,7 +53,7 @@
 				height: auto;
 				min-height: 100%;
 			}
-			div.nav.nav-left > div.section {
+			nav.nav-left > div.section {
 				background-image: url('sample-wallpaper.svg');
 				background-attachment: fixed;
 			}
@@ -69,7 +71,7 @@
 		<div class="loading-page"><div class="loading loading-flappy-square"><div></div></div></div>
 		
 		
-		<div class="nav nav-top" style="background-image: url('sample-wallpaper.svg');">
+		<nav class="nav nav-top" style="background-image: url('sample-wallpaper.svg');">
 			<div class=left>
 				<p>
 					<button onclick="toggleLeftNav();" style="left: 0px;" class="curved-border-box bk-transparent">
@@ -83,7 +85,7 @@
 			</div>
 			<div class=center>
 				<p>
-					<span class="title no-select"><a role="inPageLink" toElement="#home" timetaken="1">MSD Web Framework</a></title>
+					<span class="title no-select"><a data-role="anchor" data-to="#home" data-time="1">MSD Web Framework</a></title>
 				</p>
 			</div>
 			<div class=right>
@@ -92,71 +94,99 @@
 					<button class="curved-border-box bk-transparent" onclick="window.location.href = 'https://github.com/Mynk-9/MSD-Web-Framework';">Github</button>
 				</p>
 			</div>
-		</div>
+		</nav>
 		
-		<div class="nav nav-left">
+		<nav class="nav nav-left">
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#home" timetaken="1">Home</a>
+					<a data-role="anchor" data-to="#home" data-time="1">Home</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s1" timetaken="1">Tables</a>
+					<a data-role="anchor" data-to="#s0" data-time="1">Nav Bars</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s2" timetaken="1">Cards</a>
+					<a data-role="anchor" data-to="#s1" data-time="1">Tables</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s3" timetaken="1">Dialog Box</a>
+					<a data-role="anchor" data-to="#s2" data-time="1">Cards</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s4" timetaken="1">Slideshow</a>
+					<a data-role="anchor" data-to="#s3" data-time="1">Dialog Box</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s5" timetaken="1">Loading Icons</a>
+					<a data-role="anchor" data-to="#s4" data-time="1">Slideshow</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s6" timetaken="1">Tabination</a>
+					<a data-role="anchor" data-to="#s5" data-time="1">Loading Icons</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s7" timetaken="1">Progress Bars</a>
+					<a data-role="anchor" data-to="#s6" data-time="1">Tabination</a>
 				</p>
 			</div>
 			<div class="section">
 				<p>
-					<a role="inPageLink" toElement="#s8" timetaken="1">Masked Scrolling</a>
+					<a data-role="anchor" data-to="#s7" data-time="1">Progress Bars</a>
 				</p>
 			</div>
-		</div>
+			<div class="section">
+				<p>
+					<a data-role="anchor" data-to="#s8" data-time="1">Masked Scrolling</a>
+				</p>
+			</div>
+		</nav>
 		
 		
 		<div class="document-body" data-toggle-with-nav="true">
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="home">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id="home">
 				<span class="title big align-vertical-horizontal-center no-select" style="color: #fff;">
 					<b>A Framework to make your website shine!</b>
 				</span>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
-				<div class="slide">
+			
+			
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-4.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s1" timetaken="1">Tables.</a>
+						<a data-role="anchor" data-to="#s0" data-time="1">Navigation Bars.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="s1">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id="s0">
+				<div class="slide-full">
+					<span class="title">Navigation Bars</span>
+					<p style="font-size: 1.2em;">
+						Navigation bars (Nav Bars) are the most prominient features of a webpage. They not only make websites userfriendly but also classy.<br>
+						Making them can never be so easy with this framework. For a Nav Bar docked to the top just make a <code>nav.nav.nav-top</code> with <code>div.left</code>, <code>div.center</code> and <code>div.right</code> nested in it, with <code>p</code> nested in each of them.<br><br>
+						Similarly, to make a Nav Bar docked to left, make a <code>nav.nav.nav-left</code> with some <code>div.section</code> in it and <code>p</code> nested in each. To toggle this Left Nav, just make a Javascript function call to <code>toggleLeftNav()</code>.
+						<br><br>
+						And that's it!
+					</p>
+				</div>
+			</div>
+			
+			
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
+				<div class="slide" style="background-image: url('sample-wallpaper-5.svg'); background-attachment: fixed;">
+					<span class="title no-select align-vertical-horizontal-center">
+						<a data-role="anchor" data-to="#s1" data-time="1">Tables.</a>
+					</span>
+				</div>
+			</div>
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id="s1">
 				<div class="slide-full" style="min-height: 100%;">
 					<span class="title">Tables</span>
 					<div class="page-row">
@@ -232,14 +262,14 @@
 			</div>
 			
 			
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
 				<div class="slide" style="background-image: url('sample-wallpaper-2.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s2" timetaken="1">Cards - a new design philosophy.</a>
+						<a data-role="anchor" data-to="#s2" data-time="1">Cards - a new design philosophy.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="s2">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id="s2">
 				<div class="slide-full">
 					<span class="title">Cards - Normal Card</span>
 					<div class="page-row">
@@ -317,14 +347,14 @@
 				</div>
 			</div>
 			
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
 				<div class="slide" style="background-image: url('sample-wallpaper-3.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s3" timetaken="1">Dialog Boxes.</a>
+						<a data-role="anchor" data-to="#s3" data-time="1">Dialog Boxes.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id="s3">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id="s3">
 				<div class="slide-full">
 					<span class="title">Dialog Box</span>
 					<p style="font-size: 1.2em;">
@@ -351,17 +381,17 @@
 				</div>
 			</div>
 			
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
 				<div class="slide" style="background-image: url('sample-wallpaper-5.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s4" timetaken="1">Make your website beautiful with a <b>Slideshow</b>.</a>
+						<a data-role="anchor" data-to="#s4" data-time="1">Make your website beautiful with a <b>Slideshow</b>.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="" id="s4">
+			<div class="masked-page" data-maskedbkground="" id="s4">
 				<div class="slide-full">
 					<div class="page-row">
-						<div class="picture-slideshow effect-submerge" id="pictureSlideshow" style="position: relative; height: calc(100vh - 70px);">
+						<div class="picture-slideshow effect-submerge" id="pictureSlideshow" style="position: relative; height: calc(100vh - 70px);" data-autoscroll="true">
 							<div class="picture" style="background-image: url('sample-wallpaper.jpg');">
 								<p>Beautiful Slideshow. Beautiful Waterfalls ...</p>
 							</div>
@@ -390,6 +420,7 @@
 							</span><br>
 							Making a picture (or maybe anything) slideshow has never been easier.<br>
 							Make a <code>div.picture-slideshow</code> with desired tansition effects using <code>.effect-submerge</code>, <code>.effect-blur</code> or <code>.effect-dilate</code> as per choice. Then, add <code>div.picture</code> for images with background image using CSS, for a simple caption just add a <code>p</code> inside the <code>div.picture</code>. Finally, for scrolling purposes, add two div's -- <code>div.goleft</code> and <code>div.goright</code> and finally nest a <code>p</code> inside them for desired icons.<br>
+							To make slideshow progerss automatically, just add an attribute to the slideshow <code>data-autoscroll="true"</code>.<br>
 							<br>
 							And, that's it. All else will be done backstage!
 						</div>
@@ -397,14 +428,14 @@
 				</div>
 			</div>
 			
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
 				<div class="slide" style="background-image: url('sample-wallpaper-4.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s5" timetaken="1">Loading icons.</a>
+						<a data-role="anchor" data-to="#s5" data-time="1">Loading icons.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s5>
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id=s5>
 				<div class="slide-full">
 					<span class="title">Loading Icons</span>
 					<p>
@@ -433,14 +464,14 @@
 				</div>
 			</div>
 			
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
 				<div class="slide" style="background-image: url('sample-wallpaper-5.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s6" timetaken="1">Tabination.</a>
+						<a data-role="anchor" data-to="#s6" data-time="1">Tabination.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s6>
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id=s6>
 				<div class="slide-full">
 					<span class="title">Tabination</span>
 					<p>
@@ -484,14 +515,14 @@
 				</div>
 			</div>
 			
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
 				<div class="slide" style="background-image: url('sample-wallpaper-3.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s7" timetaken="1">Progress Bars.</a>
+						<a data-role="anchor" data-to="#s7" data-time="1">Progress Bars.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s7>
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id=s7>
 				<div class="slide-full">
 					<span class="title">Progress Bars</span>
 					<div style="width: 100%; text-align: center;">
@@ -518,21 +549,21 @@
 				</div>
 			</div>
 			
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg">
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg">
 				<div class="slide" style="background-image: url('sample-wallpaper-2.svg'); background-attachment: fixed;">
 					<span class="title no-select align-vertical-horizontal-center">
-						<a role="inPageLink" toElement="#s8" timetaken="1">Masked Scrolling.</a>
+						<a data-role="anchor" data-to="#s8" data-time="1">Masked Scrolling.</a>
 					</span>
 				</div>
 			</div>
-			<div class="masked-page" maskedbkground="sample-wallpaper.svg" id=s8>
+			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id=s8>
 				<div class="slide-full">
 					<span class="title">Masked Scrolling</span>
 					<p>
 						This <i>beautiful scrolling</i> effect is known as masked scroll, keeping the background image/pattern fixed with respect to the viewport.
 					</p>
 					<p>
-						Making it is very easy. Just use <code>div.masked-page</code> with an attribute <code>maskedbkground</code> of your desired value (the link of image, directly). Then there are two options, have a full page slide or a centerd slide, they can be made by using <code>div.slide-full</code> and <code>div.slide</code> respectively within the <code>div.masked-page</code>.
+						Making it is very easy. Just use <code>div.masked-page</code> with an attribute <code>data-maskedbkground</code> of your desired value (the link of image, directly). Then there are two options, have a full page slide or a centerd slide, they can be made by using <code>div.slide-full</code> and <code>div.slide</code> respectively within the <code>div.masked-page</code>.
 					</p>
 					<br><br><br>
 					<p>

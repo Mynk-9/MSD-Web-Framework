@@ -1,6 +1,8 @@
 /*! Copyright © 2016 Mayank Mathur 
 see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/master/LICENSE
 */
+
+
 /* General Styling */
 body {
 	font-family: Segoe UI, sans-serif;
@@ -36,14 +38,7 @@ div.full-page-box {
 .bright-bg {
 	background-color: rgba(255, 255, 255, 0.7);
 }
-a.in-page-link {
-	-webkit-touch-callout: none;	/* iOS Safari */
-	-webkit-user-select: none;		/* Chrome/Safari/Opera */
-	-khtml-user-select: none;		/* Konqueror */
-	-moz-user-select: none;			/* Firefox */
-	-ms-user-select: none;			/* IE/Edge */
-	user-select: none;				/* non-prefixed version, currently not supported by any browser */
-	
+a[data-role=anchor] {
 	cursor: pointer;
 }
 .text-center {
@@ -388,14 +383,14 @@ table.table {
 	}
 
 /* Navigation Bar */
-div.nav {
+nav.nav {
 	position: fixed;
 	top: 0px;
 	left: 0px;
 	z-index: 10;
 }
 	/* Top */
-	div.nav-top {
+	nav.nav-top {
 		width: 100vw;
 		height: 70px;
 		background-color: #eee;
@@ -403,25 +398,25 @@ div.nav {
 		
 		transition: left 1s ease;
 	}
-	div.nav-top > div.left {
+	nav.nav-top > div.left {
 		position: absolute;
 		left: 0px;
 		height: 100%;
 		width: 25%;
 	}
-	div.nav-top > div.center {
+	nav.nav-top > div.center {
 		position: absolute;
 		left: 25%;
 		height: 100%;
 		width: 50%;
 	}
-	div.nav-top > div.right {
+	nav.nav-top > div.right {
 		position: absolute;
 		left: 75%;
 		height: 100%;
 		width: 25%;
 	}
-	div.nav-top > div.left > p, div.nav-top > div.center > p, div.nav-top > div.right > p {
+	nav.nav-top > div.left > p, nav.nav-top > div.center > p, nav.nav-top > div.right > p {
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 		
@@ -436,7 +431,7 @@ div.nav {
 		transform: translate(-50%, -50%);
 	}
 	/* Left */
-	div.nav-left {
+	nav.nav-left {
 		position: fixed;
 		width: 25%;
 		min-width: 100px;
@@ -448,7 +443,7 @@ div.nav {
 		
 		transition: transform 1s ease;
 	}
-	div.nav-left > div.section {
+	nav.nav-left > div.section {
 		width: 100%;
 		position: relative;
 		background-color: #eee;
@@ -456,7 +451,7 @@ div.nav {
 		min-height: 150px;
 		border-bottom: 1px solid #e0e0e0;
 	}
-	div.nav-left > div.section > p {
+	nav.nav-left > div.section > p {
 		margin: 0px 0px 0px 0px;
 		padding: 0px 0px 0px 0px;
 		
@@ -466,21 +461,19 @@ div.nav {
 		top: 50%;
 		left: 50%;
 		margin-right: -50%;
-		-webkit-transform: translate(-50%, -50%);
-		-ms-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 	}
 		/* Animations */
-		div.nav-left.goLeft {
+		nav.nav-left.goLeft {
 			transform: translate(-100%, 0%);
 		}
-		div.nav-left.goRight {
+		nav.nav-left.goRight {
 			transform: translate(0%, 0%);
 		}
-		div.nav-top.goLeft {
+		nav.nav-top.goLeft {
 			left: 0px;
 		}
-		div.nav-top.goRight {
+		nav.nav-top.goRight {
 			left: 25%;
 		}
 /* page-row */
