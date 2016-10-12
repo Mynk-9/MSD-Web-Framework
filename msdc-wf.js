@@ -129,48 +129,71 @@ window.onload = function() {
 	function adjestPSS() {
 		var pss = document.querySelectorAll('.picture-slideshow');
 		for (i = 0; i < pss.length; i++) {
-			var left, right;
+			var left, right; // will create handles for right and left buttons
 			left = pss[i].querySelectorAll('.goleft')[0];
 			right = pss[i].querySelectorAll('.goright')[0];
 			var pssx = pss[i];	/* Done because pss[i] returns an 'undefined' value. Found it using console.log(typeof pss[i]); */
 			left.addEventListener('click', function() {ssgoleft(pssx);});
 			right.addEventListener('click', function() {ssgoright(pssx);});
-		}
-	}
-	function ssgoleft(ss) {
-		var pics = ss.querySelectorAll('.picture');
-		var z = 0;
-		for (i = 0; i < pics.length; i++) {
-			if (pics[i].className.indexOf('active') != -1) {
-				if (i == 0) {
-					z = pics.length - 1;
-				} else {
-					z = i - 1;
-				}
+			
+			/* Now, check for auto-sliding slideshows*/
+			
+			if (pss[i].getAttribute('data-autoscroll') == 'true') {
+				setInterval(function() {var param = pssx; autoSlide(param);}, 3500);
 			}
 		}
-		for (i = 0; i < pics.length; i++) {
-			___(pics[i]).toggleClass(' active', ' ');
+		
+		function autoSlide(ss) {
+			var slides = [] = ss.querySelectorAll('div.picture');
+				for (x = 0; x < slides.length; x++) {
+					if (slides[x].className.indexOf('active') > 0) {
+						slides[x].className = slides[x].className.replace('active', '');
+						if (x === slides.length - 1) {
+							slides[0].className += ' active';
+						} else {
+							x++;
+							slides[x].className += ' active';
+						}
+						break;
+					}
+				}
 		}
-		___(pics[z]).addClass('active');
-	}
-	function ssgoright(ss) {
-		var pics = ss.querySelectorAll('.picture');
-		var z = 0;
-		for (i = 0; i < pics.length; i++) {
-			if (pics[i].className.indexOf('active') != -1) {
-				if (i == (pics.length - 1)) {
-					z = 0
-				} else {
-					z = i + 1;
+		function ssgoleft(ss) {
+			var pics = ss.querySelectorAll('.picture');
+			var z = 0;
+			for (i = 0; i < pics.length; i++) {
+				if (pics[i].className.indexOf('active') != -1) {
+					if (i == 0) {
+						z = pics.length - 1;
+					} else {
+						z = i - 1;
+					}
 				}
 			}
+			for (i = 0; i < pics.length; i++) {
+				___(pics[i]).toggleClass(' active', ' ');
+			}
+			___(pics[z]).addClass('active');
 		}
-		for (i = 0; i < pics.length; i++) {
-			___(pics[i]).toggleClass(' active', ' ');
+		function ssgoright(ss) {
+			var pics = ss.querySelectorAll('.picture');
+			var z = 0;
+			for (i = 0; i < pics.length; i++) {
+				if (pics[i].className.indexOf('active') != -1) {
+					if (i == (pics.length - 1)) {
+						z = 0
+					} else {
+						z = i + 1;
+					}
+				}
+			}
+			for (i = 0; i < pics.length; i++) {
+				___(pics[i]).toggleClass(' active', ' ');
+			}
+			___(pics[z]).addClass('active');
 		}
-		___(pics[z]).addClass('active');
 	}
+	
 /* Tabination Maintainance */
 	function adjestTBS() {
 		var tabins = document.querySelectorAll('.tabination');
@@ -208,87 +231,45 @@ window.onload = function() {
 	}
 /* Smooth Scroll */
 	function adjestIPL() {
-		x = document.getElementsByTagName('a');
-		for (i = 0; i < x.length; i++) {
-			if (x[i].getAttribute('role') == 'inPageLink') {
-				x[i].className += ' in-page-link';
-				if (x[i].getAttribute('toElement').indexOf('#') == 0) {
-					x[i].addEventListener('click', function() {
-						var z = this;
-						var ele = document.getElementById(z.getAttribute('toElement').replace('#', ''));
-						
-						
-						var tt = parseInt(z.getAttribute('timetaken'));
-						var fps =  100;
-						var interval = 1000 / fps;
-						var iteration = fps * tt;
-						var n = 0;
-						var ii = (ele.offsetTop - getWinYOset()) / iteration;
-						
-						var w = false;
-						if (getWinYOset() > ele.offsetTop) {
-							ii = (0 - (getWinYOset() - ele.offsetTop)) / iteration;
-							w = true;
-						}
-						var q = setInterval(function() {move();}, interval);
-						function move() {
-							if (getWinYOset() == ele.offsetTop) {
-								clearInterval(q);
-								finalReturn();		// make sure there is no error
-								return;
-							} else if (w == true & getWinYOset() < ele.offsetTop) {
-								clearInterval(q);
-								finalReturn();		// make sure there is no error
-								return;
-							} else if (w == false & getWinYOset() > ele.offsetTop) {
-								clearInterval(q);
-								finalReturn();		// make sure there is no error
-								return;
-							} else {
-								n++;
-							}
-							window.scrollBy(0, ii);
-						}
-						function getWinYOset() {
-							var y = 0;
-							if (document.querySelectorAll('.nav-top').length > 0) {
-								y = (window.pageYOffset + 70);
-							} else {
-								y = window.pageYOffset;
-							}
-							return y;
-						}
-						function finalReturn() {
-							var diff = getWinYOset() - ele.offsetTop;
-							/*console.log('final return -> ' + diff);*/
-							window.scrollBy(0, diff);
-						}
-					});
+		___('a[data-role=anchor]').onEvent('click', function() {
+			var to = ___(this.getAttribute('data-to').toString())[0];
+			var time = parseInt(this.getAttribute('data-time')) || 1;
+			var frameRate = 60;
+			
+			var pos = ___(to).coordinates().y;
+			var scrolledTo = ___(document.body).scrolled().y;
+			if (___('nav.nav-top').length > 0) pos -= 70;
+			
+			var speed = ((pos - scrolledTo) / (time));
+			var displacementPerFrame = speed/frameRate;
+			
+			try {clearInterval(open);} catch (e) {}
+			open = setInterval(function() {
+				if (Math.abs(document.body.scrollTop-pos) <= Math.abs(displacementPerFrame)) {
+					window.scrollTo(0, pos);
+				} else {
+					window.scrollBy(0, displacementPerFrame);
 				}
-			}
-		}
+			}, 1000/60);
+			setTimeout(function() {clearInterval(open); window.scrollTo(0, pos);}, time*1000);
+		});
 	}
 /* Interactive Table Maintainance */
 	function adjestIT() {
-		var t = new Array(document.querySelectorAll('.table').length);
-		t = document.querySelectorAll('.table');
+		var t = ___('table.table.interactive');
 		for (i = 0; i < t.length; i++) {
-			if (t[i].className.indexOf('interactive') != -1) {
-				var rws = new Array(t[i].rows.length);
-				rws = t[i].rows;
-				var tab = t[i];
-				for (ii = 0; ii < rws.length; ii++) {
-					rws[ii].addEventListener('click', function() {
-						if (this.className.indexOf('clicked') != -1) {
-							___(this).toggleClass('clicked', '');
-						} else {
-							for (iii = 0; iii < this.parentNode.children.length; iii++) {
-								___(this.parentNode.children[iii]).toggleClass('clicked', '');
-							}
-							___(this).addClass('clicked');
+			var rws = [] = t[i].rows;
+			for (ii = 0; ii < rws.length; ii++) {
+				___(rws[ii]).onEvent('click', function() {
+					if (this.className.indexOf('clicked') != -1) {
+						___(this).toggleClass('clicked', '');
+					} else {
+						for (iii = 0; iii < this.parentNode.children.length; iii++) {
+							___(this.parentNode.children[iii]).toggleClass('clicked', '');
 						}
-					});
-				}
+						___(this).addClass('clicked');
+					}
+				});
 			}
 		}
 	}
@@ -319,7 +300,7 @@ window.onload = function() {
 		var mskd = new Array(document.querySelectorAll('.masked-page').length);
 		mskd = document.querySelectorAll('.masked-page');
 		for (i = 0; i < mskd.length; i++) {
-			var bk = mskd[i].getAttribute('maskedbkground');
+			var bk = mskd[i].getAttribute('data-maskedbkground');
 			if (bk != null) {mskd[i].style.backgroundImage = 'url(' + bk + ')';}
 		}
 	}

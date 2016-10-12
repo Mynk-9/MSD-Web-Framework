@@ -33,7 +33,7 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 		font-weight: lighter;
 	}
 	/* Left Nav */
-	div.nav-left {
+	nav.nav-left {
 		position: fixed;
 		width: 100vw;
 		min-height: 150px;
@@ -45,19 +45,19 @@ see license at - https://raw.githubusercontent.com/Mynk-9/MSD-Web-Framework/mast
 		background-color: #fff;
 		z-index: 9;
 	}
-	div.nav-left > div.section:hover {
+	nav.nav-left > div.section:hover {
 		background-color: #aaa;
 	}
-	div.nav-left.goLeft {
+	nav.nav-left.goLeft {
 		transform: translate(0%, -100%);
 	}
-	div.nav-left.goRight {
+	nav.nav-left.goRight {
 		transform: translate(0%, calc(0% + 70px));
 	}
-	div.nav-top.goLeft {
+	nav.nav-top.goLeft {
 		left: 0px;
 	}
-	div.nav-top.goRight {
+	nav.nav-top.goRight {
 		left: 0px;
 	}
 	/* Document Body */
