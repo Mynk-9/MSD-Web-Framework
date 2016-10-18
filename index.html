@@ -5,7 +5,7 @@
 		
 		<link rel="stylesheet" href="msdc-wf.css" />
 		<link rel="stylesheet" href="msdc-wf-m.css" />
-		<script src="http://mynk-9.github.io/Javascript-Web-Framework/JSFW.js"></script>
+		<script src="JS FW/jsfw.js"></script>
 		<script src="msdc-wf.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
@@ -85,7 +85,7 @@
 			</div>
 			<div class=center>
 				<p>
-					<span class="title no-select"><a data-role="anchor" data-to="#home" data-time="1">MSD Web Framework</a></title>
+					<span class="title no-select"><a data-role="anchor" data-to="#home" data-time="1">MSD Web Framework</a></span>
 				</p>
 			</div>
 			<div class=right>
@@ -341,7 +341,7 @@
 							</div>
 						</div>
 						<div style="width: 45%; margin: 10px; font-size: 1.2em; margin-top: 20px;">
-							A picture card can be used to display images or pictures with captions toggling when mouse hovered. Just use <code>div.card.card-picture</code> with <code>div.picture</code> (don't forget to include a background image!) and <code>div.caption</code> (use &ltp&gt element to wrap the caption) in it.<br>Try to hover or tap the image.
+							A picture card can be used to display images or pictures with captions toggling when mouse hovered. Just use <code>div.card.card-picture</code> with <code>div.picture</code> (don't forget to include a background image!) and <code>div.caption</code> (use &lt;&gt; element to wrap the caption) in it.<br>Try to hover or tap the image.
 						</div>
 					</div>
 				</div>
@@ -407,17 +407,17 @@
 							<div class="picture" style="background-image: url('sample-wallpaper-5.jpg');">
 								<p>A rabbit</p>
 							</div>
-							<div class="goleft"><p><</p></div><div class="goright"><p>></p></div>
+							<div class="goleft"><p><</p></div><div class="goright"><p>&lt;</p></div>
 						</div>
 						<div style="position: relative; font-size: 1.2em;">
 							<br>
-							<span>
+							<div>
 								<form>
 									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-submerge" checked />Submerge Effect
 									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-blur" />Blur Effect
 									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-dilate" />Dilate Effect
 								</form>
-							</span><br>
+							</div>
 							Making a picture (or maybe anything) slideshow has never been easier.<br>
 							Make a <code>div.picture-slideshow</code> with desired tansition effects using <code>.effect-submerge</code>, <code>.effect-blur</code> or <code>.effect-dilate</code> as per choice. Then, add <code>div.picture</code> for images with background image using CSS, for a simple caption just add a <code>p</code> inside the <code>div.picture</code>. Finally, for scrolling purposes, add two div's -- <code>div.goleft</code> and <code>div.goright</code> and finally nest a <code>p</code> inside them for desired icons.<br>
 							To make slideshow progerss automatically, just add an attribute to the slideshow <code>data-autoscroll="true"</code>.<br>
@@ -479,12 +479,12 @@
 						Take an example -> Did you liked this framework? Explore the different tabs and the smooth animation.
 						<div class="tabination">
 							<div class="tabs">
-								<div class="item" tabtarget="info1">Love it!</div>
-								<div class="item" tabtarget="info2">Liked it</div>
-								<div class="item" tabtarget="info3">Okay....</div>
-								<div class="item" tabtarget="info4">Needs Improvement</div>
-								<div class="item" tabtarget="info5">Not Good</div>
-								<div class="item" tabtarget="info6">Poor</div>
+								<div class="item" data-tabtarget="info1">Love it!</div>
+								<div class="item" data-tabtarget="info2">Liked it</div>
+								<div class="item" data-tabtarget="info3">Okay....</div>
+								<div class="item" data-tabtarget="info4">Needs Improvement</div>
+								<div class="item" data-tabtarget="info5">Not Good</div>
+								<div class="item" data-tabtarget="info6">Poor</div>
 							</div>
 							<div class="information">
 								<div class="info" id="info1">
@@ -510,7 +510,7 @@
 					</p>
 					<br><br><br>
 					<p>
-						Just use <code>div.tabination</code> with two childs - <code>div.tabs</code> and <code>div.information</code>. <code>div.tabs</code> contain various <code>div.item</code> with attribute <code>tabtarget</code> and a value corresponding to the id of the <code>div.info</code> present in <code>div.information</code>.
+						Just use <code>div.tabination</code> with two childs - <code>div.tabs</code> and <code>div.information</code>. <code>div.tabs</code> contain various <code>div.item</code> with attribute <code>data-tabtarget</code> and a value corresponding to the id of the <code>div.info</code> present in <code>div.information</code>.
 					</p>
 				</div>
 			</div>
@@ -527,22 +527,22 @@
 					<span class="title">Progress Bars</span>
 					<div style="width: 100%; text-align: center;">
 						<div class="page-row">
-							<div class="progress-bar" id=pb1 style="width: 70%;"><div class="progress" value="75%">Normal Progress</div></div>
+							<div class="progress-bar" id=pb1 style="width: 70%;"><div class="progress" data-value="75%">Normal Progress</div></div>
 							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb1').firstChild, this.value);"></input>%
 						</div>
 						<br><br>
 						<div class="page-row">
-							<div class="progress-bar" id=pb2 style="width: 70%;"><div class="progress progress-striped" value="75%">Striped Progress</div></div>
+							<div class="progress-bar" id=pb2 style="width: 70%;"><div class="progress progress-striped" data-value="75%">Striped Progress</div></div>
 							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb2').firstChild, this.value);"></input>%
 						</div>
 						<br><br>
 						<div class="page-row">
-							<div class="progress-bar" id=pb3 style="width: 70%;"><div class="progress progress-animated" value="75%">Animatable Progress</div></div>
+							<div class="progress-bar" id=pb3 style="width: 70%;"><div class="progress progress-animated" data-value="75%">Animatable Progress</div></div>
 							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb3').firstChild, this.value);"></input>%
 						</div>
 						<br><br>
 						<div class="page-row">
-							<div class="progress-bar" id=pb4 style="width: 70%;"><div class="progress progress-striped-animated" value="75%">Striped Animated Progress</div></div>
+							<div class="progress-bar" id=pb4 style="width: 70%;"><div class="progress progress-striped-animated" data-value="75%">Striped Animated Progress</div></div>
 							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb4').firstChild, this.value);"></input>%
 						</div>
 					</div>
