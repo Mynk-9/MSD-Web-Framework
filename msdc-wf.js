@@ -208,7 +208,7 @@ window.onload = function() {
 						___(divs[q]).toggleClass(' active', '');
 					}
 					this.className += ' active';
-					var id = this.getAttribute('tabtarget');
+					var id = this.getAttribute('data-tabtarget');
 					___(document.getElementById(id)).addClass('active');
 				});
 			}
@@ -289,7 +289,7 @@ window.onload = function() {
 		pb = document.querySelectorAll('.progress-bar');
 		for (i = 0; i < pb.length; i++) {
 			var pbp = pb[i].querySelectorAll('.progress')[0];
-			pbp.style.width = pbp.getAttribute('value');
+			pbp.style.width = pbp.getAttribute('data-value');
 		}
 	}
 	function changeProgress(pBar, progress) {
