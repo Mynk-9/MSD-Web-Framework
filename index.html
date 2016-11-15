@@ -5,7 +5,7 @@
 		
 		<link rel="stylesheet" href="msdc-wf.css" />
 		<link rel="stylesheet" href="msdc-wf-m.css" />
-		<script src="http://mynk-9.github.io/Javascript-Web-Framework/JSFW.js"></script>
+		<script src="JS FW/jsfw.js"></script>
 		<script src="msdc-wf.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
@@ -85,7 +85,7 @@
 			</div>
 			<div class=center>
 				<p>
-					<span class="title no-select"><a data-role="anchor" data-to="#home" data-time="1">MSD Web Framework</a></span>
+					<a data-role="anchor" data-to="#home" data-time="1"><!--<img src="msdc-wf-logo-3.png" height=100 />--><span style="vertical-align: top;" class="title no-select">MSD Web Framework</span></a>
 				</p>
 			</div>
 			<div class=right>
@@ -153,7 +153,7 @@
 		<div class="document-body" data-toggle-with-nav="true">
 			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id="home">
 				<span class="title big align-vertical-horizontal-center no-select" style="color: #fff;">
-					<b>A Framework to make your website shine!</b>
+					<b>Let's make smthng beautiful!</b>
 				</span>
 			</div>
 			
@@ -341,7 +341,7 @@
 							</div>
 						</div>
 						<div style="width: 45%; margin: 10px; font-size: 1.2em; margin-top: 20px;">
-							A picture card can be used to display images or pictures with captions toggling when mouse hovered. Just use <code>div.card.card-picture</code> with <code>div.picture</code> (don't forget to include a background image!) and <code>div.caption</code> (use &lt;&gt; element to wrap the caption) in it.<br>Try to hover or tap the image.
+							A picture card can be used to display images or pictures with captions toggling when mouse hovered. Just use <code>div.card.card-picture</code> with <code>div.picture</code> (don't forget to include a background image!) and <code>div.caption</code> (use &ltp&gt element to wrap the caption) in it.<br>Try to hover or tap the image.
 						</div>
 					</div>
 				</div>
@@ -411,13 +411,13 @@
 						</div>
 						<div style="position: relative; font-size: 1.2em;">
 							<br>
-							<div>
+							<span>
 								<form>
 									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-submerge" checked />Submerge Effect
 									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-blur" />Blur Effect
 									<input type="radio" name="effect" onchange="slideshowRadioButtonHandle(this);" value="effect-dilate" />Dilate Effect
 								</form>
-							</div>
+							</span><br>
 							Making a picture (or maybe anything) slideshow has never been easier.<br>
 							Make a <code>div.picture-slideshow</code> with desired tansition effects using <code>.effect-submerge</code>, <code>.effect-blur</code> or <code>.effect-dilate</code> as per choice. Then, add <code>div.picture</code> for images with background image using CSS, for a simple caption just add a <code>p</code> inside the <code>div.picture</code>. Finally, for scrolling purposes, add two div's -- <code>div.goleft</code> and <code>div.goright</code> and finally nest a <code>p</code> inside them for desired icons.<br>
 							To make slideshow progerss automatically, just add an attribute to the slideshow <code>data-autoscroll="true"</code>.<br>
@@ -436,7 +436,7 @@
 				</div>
 			</div>
 			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id=s5>
-				<div class="slide-full">
+				<div class="slide-full" style="font-size: 1.2em;">
 					<span class="title">Loading Icons</span>
 					<p>
 						Loading Icons can be used to show up when the webpage is loading, it gives user an impression of better and stylish web build plus a reliable website. It also gives info. the webpage is loading and should not be disturbed now for the best experience.<br><br>
@@ -472,7 +472,7 @@
 				</div>
 			</div>
 			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id=s6>
-				<div class="slide-full">
+				<div class="slide-full" style="font-size: 1.2em;">
 					<span class="title">Tabination</span>
 					<p>
 						Tabination or simply tab is a very important tool for navigation. I can be made with ease with this framework.<br><br>
@@ -546,6 +546,9 @@
 							<input type="text" class="material" value="75" onchange="changeProgress(document.getElementById('pb4').firstChild, this.value);"></input>%
 						</div>
 					</div>
+					<div style="font-size: 1.2em;">
+						Progress Bars can be made using a <code>div.progress-bar</code> and a <code>div.progress</code>, <code>div.progress.progress-striped</code>, <code>div.progerss.progress-animated</code> or their combinations to make any desired progress bar. An attribute <code>data-value=<i>i</i></code> where (-1 &lt; i &lt; 101) can be added to the <code>div.progress</code>.
+					</div>
 				</div>
 			</div>
 			
@@ -557,7 +560,7 @@
 				</div>
 			</div>
 			<div class="masked-page" data-maskedbkground="sample-wallpaper.svg" id=s8>
-				<div class="slide-full">
+				<div class="slide-full" style="font-size: 1.2em;">
 					<span class="title">Masked Scrolling</span>
 					<p>
 						This <i>beautiful scrolling</i> effect is known as masked scroll, keeping the background image/pattern fixed with respect to the viewport.
