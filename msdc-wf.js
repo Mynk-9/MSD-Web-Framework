@@ -73,23 +73,24 @@ window.onload = function() {
 /* Navbar maintainance >> */
 	function adjestNB() {
 		if (document.querySelectorAll('.nav-top').length > 0) {
-			document.body.style.padding = '70px 0px 0px 0px'; /* Setting Body padding */
+			var hgt = ___('nav.nav.nav-top')[0].offsetHeight;
+			document.body.style.padding = hgt + 'px 0px 0px 0px'; /* Setting Body padding */
 			
 			var mbm = new Array(document.querySelectorAll('.masked-page').length);
 			mbm = document.querySelectorAll('.masked-page');
 			for (i = 0; i < mbm.length; i++) {
 				if (isMobile() != true) {
-					mbm[i].style.height =  'calc(100vh - 70px)';
+					mbm[i].style.height =  'calc(100vh - ' + hgt + 'px)';
 				} else {
-					mbm[i].style.minHeight = ((window.innerHeight) - 70) + 'px';
+					mbm[i].style.minHeight = ((window.innerHeight) - hgt) + 'px';
 				}
 			}
 			var fpg = document.querySelectorAll('.full-page-box');
 			for (i = 0; i < fpg.length; i++) {
 				if (isMobile() != true) {
-					fpg[i].style.height = 'calc(100vh - 70px)';
+					fpg[i].style.height = 'calc(100vh - ' + hgt + 'px)';
 				} else {
-					fpg[i].style.height = ((window.innerHeight) - 70) + 'px';
+					fpg[i].style.height = ((window.innerHeight) - hgt) + 'px';
 				}
 			}
 		}
@@ -144,7 +145,8 @@ window.onload = function() {
 		}
 		
 		function autoSlide(ss) {
-			var slides = [] = ss.querySelectorAll('div.picture');
+			var slides = [];
+			slides = ss.querySelectorAll('div.picture');
 				for (x = 0; x < slides.length; x++) {
 					if (slides[x].className.indexOf('active') > 0) {
 						slides[x].className = slides[x].className.replace('active', '');
@@ -232,13 +234,14 @@ window.onload = function() {
 /* Smooth Scroll */
 	function adjestIPL() {
 		___('a[data-role=anchor]').onEvent('click', function() {
+			var hgt = ___('nav.nav.nav-top')[0].offsetHeight;
 			var to = ___(this.getAttribute('data-to').toString())[0];
 			var time = parseInt(this.getAttribute('data-time')) || 1;
 			var frameRate = 60;
 			
 			var pos = ___(to).coordinates().y;
 			var scrolledTo = ___(document.body).scrolled().y;
-			if (___('nav.nav-top').length > 0) pos -= 70;
+			if (___('nav.nav-top').length > 0) pos -= hgt;
 			
 			var speed = ((pos - scrolledTo) / (time));
 			var displacementPerFrame = speed/frameRate;
@@ -258,7 +261,8 @@ window.onload = function() {
 	function adjestIT() {
 		var t = ___('table.table.interactive');
 		for (i = 0; i < t.length; i++) {
-			var rws = [] = t[i].rows;
+			var rws = [];
+			rws = t[i].rows;
 			for (ii = 0; ii < rws.length; ii++) {
 				___(rws[ii]).onEvent('click', function() {
 					if (this.className.indexOf('clicked') != -1) {
